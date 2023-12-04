@@ -1,0 +1,13 @@
+
+G
+java:S1659
+"%Declare "scrollY" on a separate line.(©¿ò¬şÿÿÿÿ8ìÓäâÂ1
+]
+java:S1659"ADeclare "yPos" and all following declarations on a separate line.(–°k8ìÓäâÂ1
+O
+java:S1172"-Remove this unused method parameter "window".(ÕÖ¢Ìøÿÿÿÿ8ğÓäâÂ1
+]
+java:S1172%";Remove these unused method parameters "window", "modifier".(ÀÌ²Íøÿÿÿÿ8óÓäâÂ1
+L	java:S1060"+Replace this use of System.out by a logger.(æ¸Å¥ûÿÿÿÿ8õÓäâÂ1
+O
+java:S11725"-Remove this unused method parameter "window".(®òàùÿÿÿÿ8õÓäâÂ1

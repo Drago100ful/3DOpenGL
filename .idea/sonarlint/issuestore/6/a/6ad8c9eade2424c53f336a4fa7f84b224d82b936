@@ -1,0 +1,21 @@
+
+r
+java:S2095Í"OUse try-with-resources or close this "GLFWErrorCallback" in a "finally" clause.(àâç”ûÿÿÿÿ8Ã©§Ã1
+»
+java:S6548"˜A Singleton implementation was detected. Make sure the use of the Singleton pattern is required and the implementation is the right one for the context.(£±×Øüÿÿÿÿ8Û÷Ø¦Ã1
+L	java:S1066"+Replace this use of System.out by a logger.(íèî‡øÿÿÿÿ8ß÷Ø¦Ã1
+Y
+java:S1854F"<Remove this useless assignment to local variable "frameEnd".(†”ø’8Ì©§Ã1
+d
+java:S1659O"GDeclare "fragmentId" and all following declarations on a separate line.(ƒ˜Ÿú8Í©§Ã1
+d
+java:S1659z"BDeclare "vboId" and all following declarations on a separate line.(ŠÀÉùÿÿÿÿ8Í©§Ã1
+J
+java:S1481O"-Remove this unused "vertexId" local variable.(ƒ˜Ÿú8Ï©§Ã1
+L
+java:S1481O"/Remove this unused "fragmentId" local variable.(ƒ˜Ÿú8Ğ©§Ã1
+O
+java:S1481O"2Remove this unused "shaderProgram" local variable.(ƒ˜Ÿú8Ñ©§Ã1
+M	java:S106Í"+Replace this use of System.err by a logger.(àâç”ûÿÿÿÿ8×©§Ã1
+P
+java:S1128".Remove this unused import 'java.security.Key'.(ŞÃ“úÿÿÿÿ8Ù©§Ã1
