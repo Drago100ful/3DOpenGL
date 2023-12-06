@@ -1,7 +1,8 @@
-package ruby;
+package ruby.camera;
 
 import org.joml.Matrix4f;
 import org.joml.Vector3f;
+import ruby.Window;
 
 public class Camera {
 

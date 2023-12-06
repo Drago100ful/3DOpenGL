@@ -5,5 +5,5 @@ b	java:S112\"FDefine and throw a dedicated exception instead of using a generi
 b	java:S112h"FDefine and throw a dedicated exception instead of using a generic one.(„¹ÿÐ8ÓÇÇ£Ã1
 E
 java:S1659C"(Declare "fragmentId" on a separate line.(í°Î»8ëÇÇ£Ã1
-T
-java:S1128"2Remove this unused import 'ruby.renderer.Texture'.(ô×¶šûÿÿÿÿ8¬€ºÜÃ1
+v
+java:S1128"TRemove this unnecessary import: same package classes are always implicitly imported.(ô×¶šûÿÿÿÿ8¬€ºÜÃ1

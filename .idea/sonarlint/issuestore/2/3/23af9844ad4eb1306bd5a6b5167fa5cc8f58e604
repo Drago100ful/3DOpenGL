@@ -1,0 +1,9 @@
+
+g	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8¥ùÅøÃ1
+r
+java:S1104"UMake transform a static final constant or non-public and provide accessors if needed.(èŞÉš8ªÎÿÃ1
+K
+java:S5413+")Verify that "remove()" is used correctly.(­´ñüÿÿÿÿ8ø·‚ûÃ1
+E
+java:S1068
+"(Remove this unused "name" private field.(Ë¥¼8°ùÅøÃ1

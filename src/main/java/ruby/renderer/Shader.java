@@ -1,8 +1,9 @@
-package ruby;
+package ruby.renderer;
 
 
 import org.joml.Matrix4f;
 import org.lwjgl.BufferUtils;
+import ruby.renderer.Texture;
 
 import java.io.IOException;
 import java.nio.FloatBuffer;
@@ -52,8 +53,14 @@ public class Shader {
         int varLocation = glGetUniformLocation(shaderProgramId, location);
         FloatBuffer matrixBuffer = BufferUtils.createFloatBuffer(16);
         matrix.get(matrixBuffer);
-
+        use();
         glUniformMatrix4fv(varLocation, false, matrixBuffer);
+    }
+
+    public void uploadTexture2D(int slot, String location) {
+        int varLocation = glGetUniformLocation(shaderProgramId, location);
+        use();
+        glUniform1i(varLocation, slot);
     }
 
     public void compile() {
