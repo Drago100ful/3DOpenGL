@@ -4,8 +4,6 @@ import components.BlockRenderer;
 import org.joml.Vector4f;
 import ruby.Window;
 
-import java.util.Arrays;
-
 import static org.lwjgl.opengl.GL15.*;
 import static org.lwjgl.opengl.GL20.*;
 import static org.lwjgl.opengl.GL30.glBindVertexArray;
@@ -206,7 +204,7 @@ public class RenderBatch {
         // Add properties to local vertices array
         loadVertexProperties(index);
 
-        if (numBlocks > maxBatchSize) {
+        if (numBlocks >= maxBatchSize) {
             hasRoom = false;
         }
     }

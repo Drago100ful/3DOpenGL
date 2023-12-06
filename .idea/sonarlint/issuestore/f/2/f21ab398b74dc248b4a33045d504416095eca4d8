@@ -1,34 +1,16 @@
 
 d
-java:S1659!"BDeclare "vboId" and all following declarations on a separate line.(ûğÇşÿÿÿÿ8‰Ä1
-L	java:S106%"+Replace this use of System.out by a logger.(–­‘Àùÿÿÿÿ8‘‰Ä1
-]	java:S125@"<This block of commented-out lines of code should be removed.(ôÒµ³şÿÿÿÿ8–‰Ä1
-Y	java:S125"<This block of commented-out lines of code should be removed.(Ó´Œ­8™‰Ä1
-T
-java:S1128"2Remove this unused import 'org.lwjgl.BufferUtils'.(œ¤ÒŠûÿÿÿÿ8çûÕƒÄ1
-S
-java:S1128"1Remove this unused import 'java.nio.FloatBuffer'.(¨–Á‘ÿÿÿÿÿ8çûÕƒÄ1
+java:S1659"BDeclare "vboId" and all following declarations on a separate line.(ûğÇşÿÿÿÿ8ˆŒŠ‡Ä1
+L	java:S106"+Replace this use of System.out by a logger.(–­‘Àùÿÿÿÿ8ŠŒŠ‡Ä1
 L
-java:S1128"/Remove this unused import 'java.nio.IntBuffer'.(Â†›’8çûÕƒÄ1
-W
-java:S1128";Remove this unused import 'org.lwjgl.opengl.GL11.GL_FLOAT'.(–ı8èûÕƒÄ1
-T
-java:S1128"2Remove this unused import 'org.lwjgl.opengl.GL15'.(ÂøÜğşÿÿÿÿ8èûÕƒÄ1
-T
-java:S1128"2Remove this unused import 'org.lwjgl.opengl.GL20'.(¡–±øÿÿÿÿ8èûÕƒÄ1
-f
-java:S1128"DRemove this unused import 'org.lwjgl.opengl.GL30.glBindVertexArray'.(©ÛŒşÿÿÿÿ8èûÕƒÄ1
-a
-java:S1128"DRemove this unused import 'org.lwjgl.opengl.GL30.glGenVertexArrays'.(»äÒ8èûÕƒÄ1
-L
-java:S1068"*Remove this unused "shader" private field.(¦‚§üÿÿÿÿ8š‰Ä1
+java:S1068"*Remove this unused "shader" private field.(¦‚§üÿÿÿÿ8’ŒŠ‡Ä1
 J
-java:S1068 "(Remove this unused "cube" private field.(›Šßˆûÿÿÿÿ8š‰Ä1
+java:S1068"(Remove this unused "cube" private field.(›Šßˆûÿÿÿÿ8’ŒŠ‡Ä1
 K
-java:S1068!")Remove this unused "vaoId" private field.(ûğÇşÿÿÿÿ8š‰Ä1
+java:S1068")Remove this unused "vaoId" private field.(ûğÇşÿÿÿÿ8’ŒŠ‡Ä1
 K
-java:S1068!")Remove this unused "vboId" private field.(ûğÇşÿÿÿÿ8š‰Ä1
+java:S1068")Remove this unused "vboId" private field.(ûğÇşÿÿÿÿ8’ŒŠ‡Ä1
 K
-java:S1068!")Remove this unused "eboId" private field.(ûğÇşÿÿÿÿ8š‰Ä1
+java:S1068")Remove this unused "eboId" private field.(ûğÇşÿÿÿÿ8’ŒŠ‡Ä1
 M
-java:S1068""+Remove this unused "texture" private field.(ºŒõ—ÿÿÿÿÿ8š‰Ä1
+java:S1068"+Remove this unused "texture" private field.(ºŒõ—ÿÿÿÿÿ8’ŒŠ‡Ä1
