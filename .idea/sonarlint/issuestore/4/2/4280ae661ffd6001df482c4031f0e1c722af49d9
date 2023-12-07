@@ -1,5 +1,5 @@
 
-h	java:S112®"FDefine and throw a dedicated exception instead of using a generic one.(Ã£ òùÿÿÿÿ8ÏÀæ†Ä1
+h	java:S112±"FDefine and throw a dedicated exception instead of using a generic one.(Ã£ òùÿÿÿÿ8ÏÀæ†Ä1
 t	java:S116"SRename this field "POS_SIZE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ŞÊûüÿÿÿÿ8õÁæ†Ä1
 q	java:S116"URename this field "COLOR_SIZE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÕìÓè8õÁæ†Ä1
 s	java:S116"RRename this field "UV_SIZE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(üŠâšûÿÿÿÿ8õÁæ†Ä1
@@ -29,4 +29,4 @@ java:S1659&"BDeclare "vboId" and all following declarations on a separate line.
 v
 java:S1450&"TRemove the "eboId" field and declare it as a local variable in the relevant methods.(ûğÇşÿÿÿÿ8Ê›ò†Ä1
 c
-java:S1659{"ADeclare "yAdd" and all following declarations on a separate line.(Ö½óûÿÿÿÿ8Üˆó†Ä1
+java:S1659~"ADeclare "yAdd" and all following declarations on a separate line.(Ö½óûÿÿÿÿ8Üˆó†Ä1

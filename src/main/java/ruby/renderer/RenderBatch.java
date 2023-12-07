@@ -86,6 +86,9 @@ public class RenderBatch {
 
     public void render() {
         // For now: Rebuffer Data every frame
+        for (int i = 0; i< numBlocks; ++i) {
+            loadVertexProperties(i);
+        }
         glBindBuffer(GL_ARRAY_BUFFER, vboId);
         glBufferSubData(GL_ARRAY_BUFFER, 0, vertices);
 
