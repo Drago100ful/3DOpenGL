@@ -40,9 +40,9 @@ public class BlankScene extends Scene {
         float totalWidth = (640 - offsetX * 2);
         float size = totalWidth / 100;
 
-        for (int x = 0; x < 5; ++x) {
-            for (int y = 0; y < 5; ++y) {
-                for (int z = 0; z < 5; ++z) {
+        for (int x = 0; x < 8; ++x) {
+            for (int y = 0; y < 256; ++y) {
+                for (int z = 0; z < 8; ++z) {
                     float xPos = offsetX + x * size;
                     float yPos = offsetY + y * size;
                     float zPos = offsetZ + z * size;
@@ -58,7 +58,7 @@ public class BlankScene extends Scene {
 
     @Override
     public void update(float deltaTime) {
-        System.out.println("FPS: " + (1 / deltaTime));
+        System.out.println("FPS: " + (float) (1 / deltaTime));
 
         if (!changingScene && KeyListener.isKeyDown(GLFW_KEY_C)) {
             changingScene = true;
