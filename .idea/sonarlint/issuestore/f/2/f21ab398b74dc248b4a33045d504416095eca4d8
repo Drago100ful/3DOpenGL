@@ -1,9 +1,9 @@
 
-u
-java:S1192="SDefine a constant instead of duplicating this literal "assets/uv-test.png" 3 times.(¥í‘üÿÿÿÿ8ùÔ€³Ä1
-L	java:S106"+Replace this use of System.out by a logger.(–­‘Àùÿÿÿÿ8 Õ€³Ä1
-X	java:S125G"<This block of commented-out lines of code should be removed.(”œŒá8İ¸¤³Ä1
+o
+java:S1192>"SDefine a constant instead of duplicating this literal "assets/uv-test.png" 3 times.(ªä§Y8¬š´Ä1
+L	java:S106"+Replace this use of System.out by a logger.(–­‘Àùÿÿÿÿ8©¬š´Ä1
+X	java:S125E"<This block of commented-out lines of code should be removed.(”œŒá8°¬š´Ä1
 O
-java:S1128"-Remove this unused import 'components.Block'.(Ë—ÿÅøÿÿÿÿ8µˆ³Ä1
-T
-java:S1128"2Remove this unused import 'ruby.renderer.Texture'.(ô×¶šûÿÿÿÿ8Ÿµˆ³Ä1
+java:S1128"-Remove this unused import 'java.util.Random'.(èøÉ›ùÿÿÿÿ8ä¡´Ä1
+Y
+java:S1128"7Remove this unused import 'java.util.stream.IntStream'.(ÙÉ½Ÿùÿÿÿÿ8ä¡´Ä1

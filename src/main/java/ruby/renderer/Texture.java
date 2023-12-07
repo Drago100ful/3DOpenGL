@@ -16,7 +16,6 @@ public class Texture {
     private final int textureHeight;
 
 
-
     public Texture(String filepath) {
         this.filepath = filepath;
 

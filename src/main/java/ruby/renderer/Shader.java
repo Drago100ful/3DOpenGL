@@ -3,7 +3,6 @@ package ruby.renderer;
 
 import org.joml.Matrix4f;
 import org.lwjgl.BufferUtils;
-import ruby.renderer.Texture;
 
 import java.io.IOException;
 import java.nio.FloatBuffer;

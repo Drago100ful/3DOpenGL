@@ -8,8 +8,8 @@ import java.util.List;
 
 public class BlockSheet {
 
-    private Texture texture;
-    private List<Block> blocks;
+    private final Texture texture;
+    private final List<Block> blocks;
 
 
     public BlockSheet(Texture texture, int blockWidth, int blockHeight, int numBlocksFaces, int blockSpacing) {
@@ -19,8 +19,8 @@ public class BlockSheet {
         int currentX = 0;
         int currentY = texture.getHeight() - blockHeight; // BL Corner of TL Block
 
-        // Generate UV NDC
-        for (int i = 0; i < numBlocksFaces / 6; i += 6) {
+        // Generate Blocks from Spritesheet and assign UV
+        for (int i = 0; i < numBlocksFaces / 6; ++i) {
             Vector2f[] uv = new Vector2f[24];
 
             for (int f = 0; f < 6; ++f) {

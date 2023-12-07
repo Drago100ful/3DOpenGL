@@ -1,6 +1,5 @@
 package ruby.scene;
 
-import components.Block;
 import components.BlockRenderer;
 import components.BlockSheet;
 import org.joml.Vector3f;
@@ -10,8 +9,11 @@ import ruby.Window;
 import ruby.camera.Camera;
 import ruby.camera.Transform;
 import ruby.listener.KeyListener;
-import ruby.renderer.Texture;
 import ruby.util.AssetPool;
+
+import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
+import java.util.stream.IntStream;
 
 import static org.lwjgl.glfw.GLFW.*;
 
@@ -20,12 +22,11 @@ public class BlankScene extends Scene {
     GameObject testGo;
     private boolean changingScene = false;
     private float changeTime = 2f;
+    private BlockSheet test;
 
     public BlankScene() {
         System.out.println("Blank scene");
     }
-
-    private BlockSheet test;
 
     @Override
     public void init() {
@@ -40,15 +41,15 @@ public class BlankScene extends Scene {
         float totalWidth = (640 - offsetX * 2);
         float size = totalWidth / 100;
 
-        for (int x = 0; x < 3; ++x) {
-            for (int y = 0; y < 3; ++y) {
-                for (int z = 0; z < 3; ++z) {
+        for (int x = 0; x < 5; ++x) {
+            for (int y = 0; y < 5; ++y) {
+                for (int z = 0; z < 5; ++z) {
                     float xPos = offsetX + x * size;
                     float yPos = offsetY + y * size;
                     float zPos = offsetZ + z * size;
 
                     GameObject go = new GameObject("Obj " + x + " " + y + " " + z, new Transform(new Vector3f(xPos, yPos, zPos), new Vector3f(size * 0.75f)));
-                    go.add(new BlockRenderer(test.getBlock(0)));
+                    go.add(new BlockRenderer(test.getBlock(ThreadLocalRandom.current().nextInt(0, 4))));
                     this.addGameObjectToScene(go);
                 }
             }
@@ -58,10 +59,7 @@ public class BlankScene extends Scene {
 
     private void loadResources() {
         AssetPool.getShader("assets/shaders/default.glsl");
-        AssetPool.addBlockSheet("assets/uv-test.png",
-                new BlockSheet(AssetPool.getTexture("assets/uv-test.png"),
-                        32, 32, 6, 0)
-        );
+        AssetPool.addBlockSheet("assets/uv-test.png", new BlockSheet(AssetPool.getTexture("assets/uv-test.png"), 32, 32, 24, 0));
 
         test = AssetPool.getBlockSheet("assets/uv-test.png");
     }
