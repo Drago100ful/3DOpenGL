@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Renderer {
 
-    private final int MAX_BATCH = 16384;
+    private final int MAX_BATCH = 128;
     private final List<RenderBatch> batches;
 
     public Renderer() {
@@ -28,9 +28,13 @@ public class Renderer {
 
         for (RenderBatch batch : batches) {
             if (batch.hasRoom()) {
-                batch.addBlock(blockRenderer);
-                added = true;
-                break;
+                Texture texture = blockRenderer.getTexture();
+                if ((texture == null && batch.hasRoom()) || (texture != null && (batch.hasTexture(texture) || batch.hasTextureRoom()))) {
+                    batch.addBlock(blockRenderer);
+                    added = true;
+                    break;
+                }
+
             }
         }
 

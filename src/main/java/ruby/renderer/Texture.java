@@ -12,6 +12,9 @@ public class Texture {
 
     private final int textureId;
     private final String filepath;
+    private final int textureWidth;
+    private final int textureHeight;
+
 
 
     public Texture(String filepath) {
@@ -44,10 +47,20 @@ public class Texture {
             throw new RuntimeException("Could not load texture: " + filepath);
         }
 
+        textureHeight = height.get(0);
+        textureWidth = width.get(0);
 
         glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width.get(0), height.get(0), 0, GL_RGBA, GL_UNSIGNED_BYTE, image);
 
         stbi_image_free(image);
+    }
+
+    public int getWidth() {
+        return textureWidth;
+    }
+
+    public int getHeight() {
+        return textureHeight;
     }
 
     public void bind() {

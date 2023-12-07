@@ -1,5 +1,6 @@
 package ruby.util;
 
+import components.BlockSheet;
 import ruby.renderer.Shader;
 import ruby.renderer.Texture;
 
@@ -9,8 +10,9 @@ import java.util.Map;
 
 public class AssetPool {
 
-    private static Map<String, Shader> shaderMap = new HashMap<>();
-    private static Map<String, Texture> textureMap = new HashMap<>();
+    private static final Map<String, Shader> shaderMap = new HashMap<>();
+    private static final Map<String, Texture> textureMap = new HashMap<>();
+    private static final Map<String, BlockSheet> blockSheetMap = new HashMap<>();
 
     public static Shader getShader(String resourcePath) {
         File shaderFile = new File(resourcePath);
@@ -49,5 +51,31 @@ public class AssetPool {
         return textureMap.get(textureFile.getAbsolutePath());
     }
 
+    public static void addBlockSheet(String resourcePath, BlockSheet blockSheet) {
+        File spritesheet = new File(resourcePath);
+
+        if (!spritesheet.exists()) {
+            System.out.println("Texture (Spritesheet) at '" + spritesheet.getAbsolutePath() + "' does not exist");
+        }
+
+        if (!blockSheetMap.containsKey(spritesheet.getAbsolutePath())) {
+            blockSheetMap.put(spritesheet.getAbsolutePath(), blockSheet);
+        }
+
+    }
+
+    public static BlockSheet getBlockSheet(String resourcePath) {
+        File spritesheet = new File(resourcePath);
+
+        if (!spritesheet.exists()) {
+            System.out.println("Texture (Spritesheet) at '" + spritesheet.getAbsolutePath() + "' does not exist");
+        }
+
+        if (!blockSheetMap.containsKey(spritesheet.getAbsolutePath())) {
+            throw new RuntimeException("Tried to access uninitialized blocksheet: " + resourcePath);
+        }
+
+        return blockSheetMap.getOrDefault(spritesheet.getAbsolutePath(), null);
+    }
 
 }

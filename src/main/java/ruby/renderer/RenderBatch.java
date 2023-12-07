@@ -1,9 +1,14 @@
 package ruby.renderer;
 
 import components.BlockRenderer;
+import org.joml.Vector2f;
 import org.joml.Vector4f;
 import ruby.Window;
 import ruby.util.AssetPool;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.IntStream;
 
 import static org.lwjgl.opengl.GL15.*;
 import static org.lwjgl.opengl.GL20.*;
@@ -17,26 +22,33 @@ public class RenderBatch {
         POS: 3 Floats
         Color: 4 Floats
         UV: 2 Floats
+        TEXTURE_ID: 1 Float
      */
 
     private final int POS_SIZE = 3;
     private final int COLOR_SIZE = 4;
     private final int UV_SIZE = 2;
+    private final int TEXTURE_SIZE = 1;
 
     private final int POS_OFFSET = 0;
     private final int COLOR_OFFSET = POS_OFFSET + POS_SIZE * Float.BYTES;
     private final int UV_OFFSET = COLOR_OFFSET + COLOR_SIZE * Float.BYTES;
+    private final int TEXTURE_OFFSET = UV_OFFSET + UV_SIZE * Float.BYTES;
 
-    private final int VERTEX_SIZE = POS_SIZE + COLOR_SIZE + UV_SIZE;
+    private final int VERTEX_SIZE = POS_SIZE + COLOR_SIZE + UV_SIZE + TEXTURE_SIZE;
     private final int VERTEX_SIZE_BYTES = VERTEX_SIZE * Float.BYTES;
 
     private final BlockRenderer[] blockRenderers;
     private final Shader shader;
     private final float[] vertices;
+    private final int[] texSlots = IntStream.range(0, 8).toArray();
     private final int maxBatchSize;
+    private final List<Texture> textures;
     private int numBlocks;
+
     private boolean hasRoom;
-    private int vaoId, vboId, eboId;
+
+    private int vaoId, vboId;
 
     public RenderBatch(int maxBatchSize) {
         this.maxBatchSize = maxBatchSize;
@@ -49,6 +61,8 @@ public class RenderBatch {
 
         this.numBlocks = 0;
         this.hasRoom = true;
+
+        this.textures = new ArrayList<>();
     }
 
     public void start() {
@@ -62,7 +76,7 @@ public class RenderBatch {
         glBufferData(GL_ARRAY_BUFFER, (long) vertices.length * Float.BYTES, GL_DYNAMIC_DRAW);
 
         // Create and upload indices buffer
-        eboId = glGenBuffers();
+        int eboId = glGenBuffers();
         int[] indices = generateIndices();
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, eboId);
         glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices, GL_STATIC_DRAW);
@@ -77,6 +91,9 @@ public class RenderBatch {
         glVertexAttribPointer(2, UV_SIZE, GL_FLOAT, false, VERTEX_SIZE_BYTES, UV_OFFSET);
         glEnableVertexAttribArray(2);
 
+        glVertexAttribPointer(3, TEXTURE_SIZE, GL_FLOAT, false, VERTEX_SIZE_BYTES, TEXTURE_OFFSET);
+        glEnableVertexAttribArray(3);
+
 
     }
 
@@ -86,9 +103,6 @@ public class RenderBatch {
 
     public void render() {
         // For now: Rebuffer Data every frame
-        for (int i = 0; i< numBlocks; ++i) {
-            loadVertexProperties(i);
-        }
         glBindBuffer(GL_ARRAY_BUFFER, vboId);
         glBufferSubData(GL_ARRAY_BUFFER, 0, vertices);
 
@@ -99,18 +113,32 @@ public class RenderBatch {
         shader.uploadMat4f(Window.getCurrentScene().getCamera().getProjectionMatrix(), "uProjection");
         shader.uploadMat4f(Window.getCurrentScene().getCamera().getViewMatrix(), "uView");
 
+        for (int i = 0; i < textures.size(); ++i) {
+            glActiveTexture(GL_TEXTURE0 + 1 + i);
+            textures.get(i).bind();
+        }
+
+        shader.uploadIntArray(texSlots, "uTextures");
+
         glBindVertexArray(vaoId);
         glEnableVertexAttribArray(0);
         glEnableVertexAttribArray(1);
         glEnableVertexAttribArray(2);
+        glEnableVertexAttribArray(3);
 
         glDrawElements(GL_TRIANGLES, numBlocks * 36, GL_UNSIGNED_INT, 0);
 
         glDisableVertexAttribArray(0);
         glDisableVertexAttribArray(1);
         glDisableVertexAttribArray(2);
+        glDisableVertexAttribArray(3);
 
         glBindVertexArray(0);
+
+        for (int i = 0; i < textures.size(); ++i) {
+            glActiveTexture(GL_TEXTURE0 + 1 + i);
+            textures.get(i).unbind();
+        }
 
         shader.detach();
     }
@@ -122,8 +150,22 @@ public class RenderBatch {
         int offset = index * 24 * VERTEX_SIZE;
 
         Vector4f color = block.getColor();
+        Vector2f[] uv = block.getUvCoordinates();
 
         float xAdd, yAdd, zAdd;
+        int textureId = 0;
+
+
+        if (block.getTexture() != null) {
+            for (int i = 0; i < textures.size(); ++i) {
+                if (textures.get(i) == block.getTexture()) {
+                    textureId = i + 1;
+                    break;
+                }
+            }
+
+
+        }
 
         /*    x---x
           3 x---x 0
@@ -189,20 +231,34 @@ public class RenderBatch {
             vertices[offset + 6] = color.w;
 
             // Load UV
-            vertices[offset + 7] = 1;
-            vertices[offset + 8] = 1;
+            vertices[offset + 7] = uv[i].x;
+            vertices[offset + 8] = uv[i].y;
+
+            // Load TextureId
+            vertices[offset + 9] = textureId;
 
             offset += VERTEX_SIZE;
         }
 
     }
 
+    public boolean hasTextureRoom() {
+        return textures.size() < texSlots.length;
+    }
+
+    public boolean hasTexture(Texture texture) {
+        return textures.contains(texture);
+    }
 
     public void addBlock(BlockRenderer block) {
         // Get index and add RenderObject
         int index = numBlocks;
         blockRenderers[numBlocks] = block;
         ++numBlocks;
+
+        if (block.getTexture() != null && (!textures.contains(block.getTexture()))) {
+            textures.add(block.getTexture());
+        }
 
         // Add properties to local vertices array
         loadVertexProperties(index);
