@@ -3,6 +3,7 @@ package ruby.scene;
 import components.BlockRenderer;
 import org.joml.Vector3f;
 import org.joml.Vector4f;
+import org.lwjgl.system.Platform;
 import ruby.GameObject;
 import ruby.Window;
 import ruby.camera.Camera;
@@ -58,7 +59,13 @@ public class BlankScene extends Scene {
 
     @Override
     public void update(float deltaTime) {
-        System.out.println("FPS: " + (float) (1 / deltaTime));
+//        System.out.println("FPS: " + (1 / deltaTime));
+
+
+        if (KeyListener.isKeyDown(GLFW_KEY_Q) && KeyListener.isModifierDown(GLFW_MOD_CONTROL)) {
+            System.exit(0);
+        }
+
 
         if (!changingScene && KeyListener.isKeyDown(GLFW_KEY_C)) {
             changingScene = true;
@@ -70,6 +77,8 @@ public class BlankScene extends Scene {
         } else if (changingScene) {
             Window.changeScene(1);
         }
+
+
 
         if (KeyListener.isKeyDown(GLFW_KEY_W)) {
             camera.setPosition(camera.getPosition().add(0, 0, 25 * deltaTime));

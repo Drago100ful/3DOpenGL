@@ -7,6 +7,7 @@ public class KeyListener {
 
     private static KeyListener instance;
     private final boolean[] keyPressed = new boolean[350];
+    private final boolean[] modifierPressed = new boolean[96];
 
     private KeyListener() {
 
@@ -29,6 +30,22 @@ public class KeyListener {
         return get().keyPressed[key];
     }
 
+    public static boolean isModifierDown(int... keys) {
+        // Sum up all modifiers to get array index
+        int sum = 0;
+
+        for (int key : keys) {
+            sum += key;
+        }
+
+        if (sum >= get().modifierPressed.length) {
+            assert false : "Modifier index " + sum + " is larger than" + get().modifierPressed.length;
+            return false;
+        }
+
+        return get().modifierPressed[sum];
+    }
+
     public static void keyCallback(long window, int key, int scanCode, int action, int modifier) {
         if (key >= get().keyPressed.length) {
             assert false : "Key index " + key + " is larger than" + get().keyPressed.length;
@@ -36,8 +53,15 @@ public class KeyListener {
         }
 
         switch (action) {
-            case GLFW_PRESS -> get().keyPressed[key] = true;
-            case GLFW_RELEASE -> get().keyPressed[key] = false;
+            case GLFW_PRESS -> {
+                get().modifierPressed[modifier] = true;
+                get().keyPressed[key] = true;
+            }
+            case GLFW_RELEASE -> {
+                get().modifierPressed[modifier] = false;
+                get().keyPressed[key] = false;
+
+            }
             default -> System.out.println("Unhandled key action: " + action);
         }
     }

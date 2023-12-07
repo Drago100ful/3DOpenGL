@@ -1,8 +1,9 @@
 
+m
+java:S1192"PDefine a constant instead of duplicating this literal " is larger than" 3 times.(·“ãÙ8ù¦•Ä1
 E
-java:S4274"(Replace this assert with a proper check.(·“ãÙ8ºëı„Ã1
+java:S4274"(Replace this assert with a proper check.(·“ãÙ8§•Ä1
 E
-java:S4274""(Replace this assert with a proper check.(·“ãÙ8œ°…Ã1
-d
-java:S1172 "GRemove these unused method parameters "window", "scanCode", "modifier".(Ê­üÕ8¯‚ı„Ã1
-G	java:S106)"+Replace this use of System.out by a logger.(Ú­¼„8³‚ı„Ã1
+java:S42743"(Replace this assert with a proper check.(·“ãÙ8˜§•Ä1
+X
+java:S11721";Remove these unused method parameters "window", "scanCode".(Ê­üÕ8›§•Ä1
