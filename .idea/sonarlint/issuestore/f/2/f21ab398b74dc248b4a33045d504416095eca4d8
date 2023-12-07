@@ -1,20 +1,4 @@
 
-d
-java:S1659"BDeclare "vboId" and all following declarations on a separate line.(ûðÇþÿÿÿÿ8²–œÄ1
 t
-java:S3776="RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(ÌÆÁŒÿÿÿÿÿ8×–œÄ1
-X	java:S125>"<This block of commented-out lines of code should be removed.(”œŒá8Û–œÄ1
-X
-java:S1128"6Remove this unused import 'org.lwjgl.system.Platform'.(ýƒÔ»ûÿÿÿÿ8‘žžÄ1
-L
-java:S1068"*Remove this unused "shader" private field.(¦‚Ž§üÿÿÿÿ8ó–œÄ1
-J
-java:S1068"(Remove this unused "cube" private field.(›Šßˆûÿÿÿÿ8ô–œÄ1
-K
-java:S1068")Remove this unused "vaoId" private field.(ûðÇþÿÿÿÿ8ô–œÄ1
-K
-java:S1068")Remove this unused "vboId" private field.(ûðÇþÿÿÿÿ8ô–œÄ1
-K
-java:S1068")Remove this unused "eboId" private field.(ûðÇþÿÿÿÿ8ô–œÄ1
-M
-java:S1068"+Remove this unused "texture" private field.(ºŒõ—ÿÿÿÿÿ8ô–œÄ1
+java:S37765"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(ÌÆÁŒÿÿÿÿÿ8×–œÄ1
+X	java:S1256"<This block of commented-out lines of code should be removed.(”œŒá8Û–œÄ1

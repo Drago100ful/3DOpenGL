@@ -3,15 +3,11 @@ package ruby.scene;
 import components.BlockRenderer;
 import org.joml.Vector3f;
 import org.joml.Vector4f;
-import org.lwjgl.system.Platform;
 import ruby.GameObject;
 import ruby.Window;
 import ruby.camera.Camera;
 import ruby.camera.Transform;
 import ruby.listener.KeyListener;
-import ruby.renderer.Shader;
-import ruby.renderer.Texture;
-import ruby.shapes.Cube;
 
 import static org.lwjgl.glfw.GLFW.*;
 
@@ -20,10 +16,6 @@ public class BlankScene extends Scene {
     GameObject testGo;
     private boolean changingScene = false;
     private float changeTime = 2f;
-    private Shader shader;
-    private Cube cube;
-    private int vaoId, vboId, eboId;
-    private Texture texture;
 
     public BlankScene() {
         System.out.println("Blank scene");
@@ -77,7 +69,6 @@ public class BlankScene extends Scene {
         } else if (changingScene) {
             Window.changeScene(1);
         }
-
 
 
         if (KeyListener.isKeyDown(GLFW_KEY_W)) {
