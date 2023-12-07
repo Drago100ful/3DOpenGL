@@ -53,12 +53,6 @@ public class BlankScene extends Scene {
     public void update(float deltaTime) {
 //        System.out.println("FPS: " + (1 / deltaTime));
 
-
-        if (KeyListener.isKeyDown(GLFW_KEY_Q) && KeyListener.isModifierDown(GLFW_MOD_CONTROL)) {
-            System.exit(0);
-        }
-
-
         if (!changingScene && KeyListener.isKeyDown(GLFW_KEY_C)) {
             changingScene = true;
         }

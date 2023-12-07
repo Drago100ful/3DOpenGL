@@ -87,6 +87,11 @@ public class Window {
         while (!glfwWindowShouldClose(glfwWindow)) {
             glfwPollEvents();
 
+
+            if (KeyListener.isKeyDown(GLFW_KEY_Q) && KeyListener.isModifierDown(GLFW_MOD_CONTROL, GLFW_MOD_SHIFT)) {
+                System.exit(0);
+            }
+
             glClearColor(rgba.x, rgba.y, rgba.z, rgba.w);
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
