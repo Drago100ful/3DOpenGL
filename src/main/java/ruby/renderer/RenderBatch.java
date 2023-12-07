@@ -234,17 +234,6 @@ public class RenderBatch {
 
             offset += 4;
         }
-
-//
-//        offset+=4;
-//        elements[posArray + 6] = offset + 3;
-//        elements[posArray + 7] = offset + 2;
-//        elements[posArray + 8] = offset;
-//
-//        elements[posArray + 9] =  offset;
-//        elements[posArray + 10] = offset + 2;
-//        elements[posArray + 11] = offset + 1;
-
     }
 
 

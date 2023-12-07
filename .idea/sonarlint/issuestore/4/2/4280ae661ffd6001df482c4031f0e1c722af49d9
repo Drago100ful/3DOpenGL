@@ -30,4 +30,3 @@ v
 java:S1450&"TRemove the "eboId" field and declare it as a local variable in the relevant methods.(ûğÇşÿÿÿÿ8Ê›ò†Ä1
 c
 java:S1659{"ADeclare "yAdd" and all following declarations on a separate line.(Ö½óûÿÿÿÿ8Üˆó†Ä1
-^	java:S125ï"<This block of commented-out lines of code should be removed.(Ø¼Òúÿÿÿÿ8Ò›ò†Ä1

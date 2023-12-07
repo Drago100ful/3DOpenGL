@@ -5,9 +5,6 @@ G
 src/main/java/Main.java,e\4\e44a8606ce010ad9b89aafdfcee2ab49afbf6d10
 N
 src/main/java/ruby/Window.java,6\a\6ad8c9eade2424c53f336a4fa7f84b224d82b936
-:
-
-OpenGL.iml,a\4\a44b178ffb701b29c7651bc2ec6587795fd5077a
 ^
 .src/main/java/ruby/Listener/MouseListener.java,3\0\3012706a4db2e77182bf94e35f53e3c677cde4df
 ^
@@ -18,10 +15,6 @@ Q
 !src/main/java/ruby/util/Time.java,f\c\fc87b40588780ff633c7514c70d763b342f43830
 K
 assets/shaders/default.glsl,1\c\1c052c424389a5e5e23d6b8cb8b07e89d2341ffd
-N
-src/main/java/ruby/Shader.java,9\a\9a1dfda53983b81b1401058c814c6344205c05c2
-N
-src/main/java/ruby/Camera.java,7\c\7cafa03a42739be9a509cebb318222b4bed56795
 ;
 gradlew.bat,2\a\2a45a911a8f1836b0b6c5b758962572012d8f8c3
 S
@@ -40,8 +33,6 @@ W
 'src/main/java/ruby/renderer/Shader.java,f\c\fcc72b0f5f3ded09018e907c0af8e7477cda694f
 U
 %src/main/java/ruby/camera/Camera.java,f\8\f829ceea3d939e36d97397d3a18d7938d9dc62b1
-^
-.src/main/java/ruby/renderer/BlockRenderer.java,6\8\68450a1a2c6d5cdf0a538215fc924795ef3b00da
 R
 "src/main/java/ruby/GameObject.java,2\3\23af9844ad4eb1306bd5a6b5167fa5cc8f58e604
 Q
@@ -52,15 +43,9 @@ W
 'src/main/java/ruby/scene/GameScene.java,6\8\68dfd3f92e6bdbaa20ce354a7579d7a6793e0c51
 X
 (src/main/java/ruby/scene/BlankScene.java,f\2\f21ab398b74dc248b4a33045d504416095eca4d8
-R
-"src/main/java/ruby/components.java,8\1\81708c4ccdc7edb9fe89b61eaf3ffb9197b89fb7
-\
-,src/main/java/ruby/components/Component.java,0\6\0638cef54338dc6e2d2cead5e196126f589cf877
 [
 +src/main/java/components/BlockRenderer.java,1\0\10a673e7718ed462f11edccaf920ca372258bdba
 Z
 *src/main/java/components/FontRenderer.java,6\3\63ae67db27aa0bb1617fe5f08c36fad12bc84f03
-X
-(src/main/java/ruby/camera/Transofrm.java,a\4\a49f63119ffa25588364ebd723adfb89f4330f93
 X
 (src/main/java/ruby/camera/Transform.java,5\6\5679254b3c8219b5dcba6dc844a46fac7eed09df
