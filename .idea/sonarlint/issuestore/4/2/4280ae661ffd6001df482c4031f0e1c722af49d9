@@ -1,32 +1,32 @@
 
-h	java:S112±"FDefine and throw a dedicated exception instead of using a generic one.(Ã£ òùÿÿÿÿ8ÏÀæ†Ä1
-t	java:S116"SRename this field "POS_SIZE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ŞÊûüÿÿÿÿ8õÁæ†Ä1
-q	java:S116"URename this field "COLOR_SIZE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÕìÓè8õÁæ†Ä1
-s	java:S116"RRename this field "UV_SIZE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(üŠâšûÿÿÿÿ8õÁæ†Ä1
-q	java:S116"URename this field "POS_OFFSET" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(éô„ı8õÁæ†Ä1
-s	java:S116"WRename this field "COLOR_OFFSET" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(½›âŠ8õÁæ†Ä1
-u	java:S116"TRename this field "UV_OFFSET" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¹’Üüÿÿÿÿ8õÁæ†Ä1
-w	java:S116"VRename this field "VERTEX_SIZE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(±»¢Àúÿÿÿÿ8õÁæ†Ä1
-x	java:S116"\Rename this field "VERTEX_SIZE_BYTES" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ôóïñ8õÁæ†Ä1
+h	java:S112±"FDefine and throw a dedicated exception instead of using a generic one.(Ã£ òùÿÿÿÿ8œÏ¯Ä1
+t	java:S116"SRename this field "POS_SIZE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ŞÊûüÿÿÿÿ8âÏ¯Ä1
+q	java:S116"URename this field "COLOR_SIZE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÕìÓè8âÏ¯Ä1
+s	java:S116"RRename this field "UV_SIZE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(üŠâšûÿÿÿÿ8âÏ¯Ä1
+q	java:S116"URename this field "POS_OFFSET" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(éô„ı8âÏ¯Ä1
+s	java:S116"WRename this field "COLOR_OFFSET" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(½›âŠ8âÏ¯Ä1
+u	java:S116"TRename this field "UV_OFFSET" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¹’Üüÿÿÿÿ8âÏ¯Ä1
+w	java:S116"VRename this field "VERTEX_SIZE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(±»¢Àúÿÿÿÿ8ãÏ¯Ä1
+x	java:S116"\Rename this field "VERTEX_SIZE_BYTES" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ôóïñ8ãÏ¯Ä1
 C
-java:S1170"!Make this final field static too.(ŞÊûüÿÿÿÿ8õÁæ†Ä1
+java:S1170"!Make this final field static too.(ŞÊûüÿÿÿÿ8ãÏ¯Ä1
 >
-java:S1170"!Make this final field static too.(ÕìÓè8õÁæ†Ä1
+java:S1170"!Make this final field static too.(ÕìÓè8ãÏ¯Ä1
 C
-java:S1170"!Make this final field static too.(üŠâšûÿÿÿÿ8õÁæ†Ä1
+java:S1170"!Make this final field static too.(üŠâšûÿÿÿÿ8ãÏ¯Ä1
 >
-java:S1170"!Make this final field static too.(éô„ı8õÁæ†Ä1
+java:S1170"!Make this final field static too.(éô„ı8ãÏ¯Ä1
 >
-java:S1170"!Make this final field static too.(½›âŠ8õÁæ†Ä1
+java:S1170"!Make this final field static too.(½›âŠ8ãÏ¯Ä1
 C
-java:S1170"!Make this final field static too.(¹’Üüÿÿÿÿ8õÁæ†Ä1
+java:S1170"!Make this final field static too.(¹’Üüÿÿÿÿ8ãÏ¯Ä1
 C
-java:S1170"!Make this final field static too.(±»¢Àúÿÿÿÿ8õÁæ†Ä1
+java:S1170"!Make this final field static too.(±»¢Àúÿÿÿÿ8ãÏ¯Ä1
 >
-java:S1170"!Make this final field static too.(Ôóïñ8õÁæ†Ä1
+java:S1170"!Make this final field static too.(Ôóïñ8ãÏ¯Ä1
 d
-java:S1659&"BDeclare "vboId" and all following declarations on a separate line.(ûğÇşÿÿÿÿ8Ê›ò†Ä1
+java:S1659'"BDeclare "vboId" and all following declarations on a separate line.(ûğÇşÿÿÿÿ8æÏ¯Ä1
 v
-java:S1450&"TRemove the "eboId" field and declare it as a local variable in the relevant methods.(ûğÇşÿÿÿÿ8Ê›ò†Ä1
+java:S1450'"TRemove the "eboId" field and declare it as a local variable in the relevant methods.(ûğÇşÿÿÿÿ8æÏ¯Ä1
 c
-java:S1659~"ADeclare "yAdd" and all following declarations on a separate line.(Ö½óûÿÿÿÿ8Üˆó†Ä1
+java:S1659~"ADeclare "yAdd" and all following declarations on a separate line.(Ö½óûÿÿÿÿ8ôÏ¯Ä1

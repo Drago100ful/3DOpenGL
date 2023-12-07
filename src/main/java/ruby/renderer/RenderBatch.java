@@ -3,6 +3,7 @@ package ruby.renderer;
 import components.BlockRenderer;
 import org.joml.Vector4f;
 import ruby.Window;
+import ruby.util.AssetPool;
 
 import static org.lwjgl.opengl.GL15.*;
 import static org.lwjgl.opengl.GL20.*;
@@ -39,8 +40,7 @@ public class RenderBatch {
 
     public RenderBatch(int maxBatchSize) {
         this.maxBatchSize = maxBatchSize;
-        this.shader = new Shader("assets/shaders/default.glsl");
-        shader.compile();
+        this.shader = AssetPool.getShader("assets/shaders/default.glsl");
 
         this.blockRenderers = new BlockRenderer[maxBatchSize];
 

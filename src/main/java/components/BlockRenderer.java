@@ -1,11 +1,13 @@
 package components;
 
+import org.joml.Vector2f;
 import org.joml.Vector4f;
 import ruby.Component;
 
 public class BlockRenderer extends Component {
 
     private Vector4f color;
+
     private boolean asc = true;
 
     public BlockRenderer(Vector4f color) {

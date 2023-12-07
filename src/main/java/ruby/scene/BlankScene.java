@@ -8,6 +8,7 @@ import ruby.Window;
 import ruby.camera.Camera;
 import ruby.camera.Transform;
 import ruby.listener.KeyListener;
+import ruby.util.AssetPool;
 
 import static org.lwjgl.glfw.GLFW.*;
 
@@ -25,6 +26,7 @@ public class BlankScene extends Scene {
     public void init() {
         this.camera = new Camera(new Vector3f(0, 0, 0));
 
+        loadResources();
 
         int offsetX = 0;
         int offsetY = 0;
@@ -47,6 +49,10 @@ public class BlankScene extends Scene {
             }
         }
 
+    }
+
+    private void loadResources() {
+        AssetPool.getShader("assets/shaders/default.glsl");
     }
 
     @Override
