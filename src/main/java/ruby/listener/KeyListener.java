@@ -39,8 +39,7 @@ public class KeyListener {
         }
 
         if (sum >= get().modifierPressed.length) {
-            assert false : "Modifier index " + sum + " is larger than" + get().modifierPressed.length;
-            return false;
+            throw new RuntimeException(get().getClass().getName() + ": Modifier index " + sum + " is larger than" + get().modifierPressed.length);
         }
 
         return get().modifierPressed[sum];
@@ -48,8 +47,7 @@ public class KeyListener {
 
     public static void keyCallback(long window, int key, int scanCode, int action, int modifier) {
         if (key >= get().keyPressed.length) {
-            assert false : "Key index " + key + " is larger than" + get().keyPressed.length;
-            return;
+            throw new RuntimeException(get().getClass().getName() + ": Key index" + key + " is larger than key array");
         }
 
         switch (action) {

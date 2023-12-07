@@ -1,9 +1,7 @@
 
-m
-java:S1192"PDefine a constant instead of duplicating this literal " is larger than" 3 times.(·“ãÙ8ù¦•Ä1
+b	java:S112*"FDefine and throw a dedicated exception instead of using a generic one.(‹¢°˜8Õº²Ä1
+b	java:S1122"FDefine and throw a dedicated exception instead of using a generic one.(ñÙß¿8Õº²Ä1
 E
-java:S4274"(Replace this assert with a proper check.(·“ãÙ8§•Ä1
-E
-java:S42743"(Replace this assert with a proper check.(·“ãÙ8˜§•Ä1
+java:S4274"(Replace this assert with a proper check.(·“ãÙ8öº²Ä1
 X
-java:S11721";Remove these unused method parameters "window", "scanCode".(Ê­üÕ8›§•Ä1
+java:S11720";Remove these unused method parameters "window", "scanCode".(Ê­üÕ8ıº²Ä1
