@@ -25,11 +25,13 @@ public class Window {
     private final int height;
     public Vector4f rgba = new Vector4f(1);
     private long glfwWindow;
+    private boolean cursorEnabled;
 
     private Window() {
         this.width = 1280;
         this.height = 720;
         this.title = "Default";
+        this.cursorEnabled = true;
     }
 
     public static int getWidth() {
@@ -39,6 +41,7 @@ public class Window {
     public static int getHeight() {
         return get().height;
     }
+
 
     public static Window get() {
         if (Window.window == null) {
@@ -62,6 +65,10 @@ public class Window {
             }
             default -> throw new RuntimeException("Unknown scene index: " + scene);
         }
+    }
+
+    public static Scene getCurrentScene() {
+        return Window.currentScene;
     }
 
     public void run() {
@@ -108,8 +115,19 @@ public class Window {
         }
     }
 
-    public static Scene getCurrentScene() {
-        return Window.currentScene;
+    public static void setCursor(boolean mode) {
+        get().cursorEnabled = mode;
+
+        if (mode) {
+            glfwSetInputMode(get().glfwWindow, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+            return;
+        }
+
+        glfwSetInputMode(get().glfwWindow, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+    }
+
+    public static void flipCursorMode() {
+        setCursor(!get().cursorEnabled);
     }
 
     public void init() {

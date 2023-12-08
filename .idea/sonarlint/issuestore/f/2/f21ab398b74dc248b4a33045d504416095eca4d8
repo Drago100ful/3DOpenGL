@@ -1,9 +1,5 @@
 
 o
-java:S1192>"SDefine a constant instead of duplicating this literal "assets/uv-test.png" 3 times.(ªä§Y8¬š´Ä1
-L	java:S106"+Replace this use of System.out by a logger.(–­‘Àùÿÿÿÿ8©¬š´Ä1
-X	java:S125E"<This block of commented-out lines of code should be removed.(”œŒá8°¬š´Ä1
-O
-java:S1128"-Remove this unused import 'java.util.Random'.(èøÉ›ùÿÿÿÿ8ä¡´Ä1
-Y
-java:S1128"7Remove this unused import 'java.util.stream.IntStream'.(ÙÉ½Ÿùÿÿÿÿ8ä¡´Ä1
+java:S1192?"SDefine a constant instead of duplicating this literal "assets/uv-test.png" 3 times.(ªä§Y8‹«³İÄ1
+L	java:S106"+Replace this use of System.out by a logger.(–­‘Àùÿÿÿÿ8İ­³İÄ1
+X	java:S125G"<This block of commented-out lines of code should be removed.(”œŒá8è­³İÄ1

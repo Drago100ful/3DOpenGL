@@ -5,3 +5,4 @@ E
 java:S4274"(Replace this assert with a proper check.(·“ãÙ8öº²Ä1
 X
 java:S11720";Remove these unused method parameters "window", "scanCode".(Ê­üÕ8ıº²Ä1
+G	java:S106?"+Replace this use of System.out by a logger.(Ú­¼„8”¸§ĞÄ1

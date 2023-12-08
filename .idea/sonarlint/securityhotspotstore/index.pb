@@ -17,10 +17,6 @@ K
 assets/shaders/default.glsl,1\c\1c052c424389a5e5e23d6b8cb8b07e89d2341ffd
 ;
 gradlew.bat,2\a\2a45a911a8f1836b0b6c5b758962572012d8f8c3
-S
-#src/main/java/ruby/shapes/cube.java,c\7\c712561da86ad9ce1b6ddc7a575dbe6015df8ac4
-S
-#src/main/java/ruby/shapes/Cube.java,2\d\2dab9e37fe9c21eef3ceaa1626ead4b112bd34eb
 \
 ,src/main/java/ruby/renderer/RenderBatch.java,4\2\4280ae661ffd6001df482c4031f0e1c722af49d9
 Y

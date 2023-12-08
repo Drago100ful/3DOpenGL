@@ -1,5 +1,7 @@
 package ruby.listener;
 
+import org.joml.Vector2f;
+
 import static org.lwjgl.glfw.GLFW.GLFW_PRESS;
 import static org.lwjgl.glfw.GLFW.GLFW_RELEASE;
 
@@ -55,9 +57,14 @@ public class MouseListener {
         get().scrollY = scrollY;
     }
 
+    public static Vector2f getDxDy() {
+        return new Vector2f(getDx(), getDy());
+    }
+
     public static void endFrame() {
         get().scrollX = get().scrollY = 0.0f;
-        get().lastX = get().lastY = 0.0f;
+        get().lastX = get().xPos;
+        get().lastY = get().yPos;
     }
 
     public static float getxPos() {
@@ -68,19 +75,19 @@ public class MouseListener {
         return (float) get().yPos;
     }
 
-    public float getDx() {
+    public static float getDx() {
         return (float) (get().lastX - get().xPos);
     }
 
-    public float getDy() {
+    public static float getDy() {
         return (float) (get().lastY - get().yPos);
     }
 
-    public float getScrollX() {
+    public static float getScrollX() {
         return (float) get().scrollX;
     }
 
-    public float getScrollY() {
+    public static float getScrollY() {
         return (float) get().scrollY;
     }
 

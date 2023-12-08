@@ -9,11 +9,10 @@ import ruby.Window;
 import ruby.camera.Camera;
 import ruby.camera.Transform;
 import ruby.listener.KeyListener;
+import ruby.listener.MouseListener;
 import ruby.util.AssetPool;
 
-import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
-import java.util.stream.IntStream;
 
 import static org.lwjgl.glfw.GLFW.*;
 
@@ -23,6 +22,7 @@ public class BlankScene extends Scene {
     private boolean changingScene = false;
     private float changeTime = 2f;
     private BlockSheet test;
+    private final Vector3f movementVector = new Vector3f(0);
 
     public BlankScene() {
         System.out.println("Blank scene");
@@ -30,6 +30,7 @@ public class BlankScene extends Scene {
 
     @Override
     public void init() {
+        Window.setCursor(false);
         this.camera = new Camera(new Vector3f(0, 0, 0));
 
         loadResources();
@@ -64,9 +65,11 @@ public class BlankScene extends Scene {
         test = AssetPool.getBlockSheet("assets/uv-test.png");
     }
 
+
     @Override
     public void update(float deltaTime) {
 //        System.out.println("FPS: " + (1 / deltaTime));
+        movementVector.zero();
 
         if (!changingScene && KeyListener.isKeyDown(GLFW_KEY_C)) {
             changingScene = true;
@@ -79,23 +82,31 @@ public class BlankScene extends Scene {
             Window.changeScene(1);
         }
 
-
         if (KeyListener.isKeyDown(GLFW_KEY_W)) {
-            camera.setPosition(camera.getPosition().add(0, 0, 25 * deltaTime));
-        } else if (KeyListener.isKeyDown(GLFW_KEY_S)) {
-            camera.setPosition(camera.getPosition().sub(0, 0, 25 * deltaTime));
-        } else if (KeyListener.isKeyDown(GLFW_KEY_D)) {
-            camera.setPosition(camera.getPosition().add(25 * deltaTime, 0, 0));
-        } else if (KeyListener.isKeyDown(GLFW_KEY_A)) {
-            camera.setPosition(camera.getPosition().sub(25 * deltaTime, 0, 0));
-        } else if (KeyListener.isKeyDown(GLFW_KEY_LEFT)) {
-            camera.setRotation(camera.getRotation() - 1 * deltaTime);
-        } else if (KeyListener.isKeyDown(GLFW_KEY_RIGHT)) {
-            camera.setRotation(camera.getRotation() + 1 * deltaTime);
-        } else if (KeyListener.isKeyDown(GLFW_KEY_UP)) {
-            camera.setPosition(camera.getPosition().sub(0, 25 * deltaTime, 0));
-        } else if (KeyListener.isKeyDown(GLFW_KEY_DOWN)) {
-            camera.setPosition(camera.getPosition().add(0, 25 * deltaTime, 0));
+            movementVector.add(0, 0, 1);
+        }
+        if (KeyListener.isKeyDown(GLFW_KEY_S)) {
+            movementVector.add(0, 0, -1);
+        }
+        if (KeyListener.isKeyDown(GLFW_KEY_D)) {
+            movementVector.add(-1, 0, 0);
+        }
+
+        if (KeyListener.isKeyDown(GLFW_KEY_A)) {
+            movementVector.add(1, 0, 0);
+        }
+
+        camera.updateAngle(MouseListener.getDxDy());
+
+        if ((movementVector.x != 0) || (movementVector.y != 0) || (movementVector.z != 0)) {
+            movementVector.normalize();
+        }
+
+        camera.translatePosition(movementVector);
+
+
+        if (KeyListener.isKeyDown(GLFW_KEY_S)) {
+            camera.setRotation(10);
         }
 
         for (GameObject go : this.gameObjects) {
@@ -103,5 +114,6 @@ public class BlankScene extends Scene {
         }
 
         this.renderer.render();
+        MouseListener.endFrame();
     }
 }

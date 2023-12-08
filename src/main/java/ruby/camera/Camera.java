@@ -1,8 +1,10 @@
 package ruby.camera;
 
 import org.joml.Matrix4f;
+import org.joml.Vector2f;
 import org.joml.Vector3f;
 import ruby.Window;
+import ruby.listener.MouseListener;
 
 public class Camera {
 
@@ -14,6 +16,7 @@ public class Camera {
     private Vector3f eye;
     private Vector3f center;
     private Vector3f up;
+    private Vector2f angle;
 
     private float fov = 65.0f;
     private float nearPlane = 0.01f;
@@ -29,6 +32,7 @@ public class Camera {
         this.eye = new Vector3f(0, 0, 20);
         this.center = new Vector3f(0, 0, 0);
         this.up = new Vector3f(0, 1, 0);
+        this.angle = new Vector2f(0,0);
         adjustProjection();
     }
 
@@ -37,12 +41,29 @@ public class Camera {
     }
 
     public void setPosition(Vector3f position) {
-        this.position = position;
+        this.position = position.rotateY((float) Math.toRadians(-angle.x));
+    }
+
+    public Vector2f getAngle() {
+        return angle;
+    }
+
+    public void updateAngle(Vector2f mouse) {
+        angle.add(mouse);
+    }
+
+
+    public void setAngle(Vector2f angle) {
+        this.angle = angle;
     }
 
     public Matrix4f getViewMatrix() {
-        viewMatrix.identity();
-        viewMatrix.lookAt(eye, center, up);
+        viewMatrix
+                .identity()
+                .rotateX((float) Math.toRadians(-angle.y))
+                .rotateY((float) Math.toRadians(-angle.x))
+                .lookAt(eye, center, up)
+        ;
 
         return viewMatrix;
     }
@@ -51,8 +72,8 @@ public class Camera {
         transformMatrix.identity();
         transformMatrix
                 .scale(scale)
-                .rotate(rotation, new Vector3f(0.0f, 1.0f, 0.0f))
-                .translate(position);
+                .translate(position)
+                ;
 
         return transformMatrix;
     }
@@ -67,6 +88,22 @@ public class Camera {
 
     public Matrix4f getProjectionMatrix() {
         return projectionMatrix;
+    }
+
+    public void translatePosition(Vector3f vector) {
+
+        if(vector.z != 0) {
+            position.x -= (float) Math.sin(Math.toRadians(-angle.x)) * vector.z;
+            position.z += (float) Math.cos(Math.toRadians(-angle.x)) * vector.z;
+        }
+
+        if (vector.x != 0) {
+            position.x -= (float) Math.sin(Math.toRadians(-angle.x-90)) * vector.x;
+            position.z += (float) Math.cos(Math.toRadians(-angle.x-90)) * vector.x;
+        }
+
+        position.y += vector.y;
+
     }
 
     public void adjustProjection() {
