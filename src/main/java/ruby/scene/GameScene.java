@@ -1,7 +1,9 @@
 package ruby.scene;
 
+import org.joml.Vector3f;
 import org.joml.Vector4f;
 import ruby.Window;
+import ruby.camera.Camera;
 
 public class GameScene extends Scene {
 
@@ -12,7 +14,7 @@ public class GameScene extends Scene {
 
     @Override
     public void init() {
-
+        this.camera = new Camera(new Vector3f(0));
     }
 
     @Override
