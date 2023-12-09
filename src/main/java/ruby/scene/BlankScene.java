@@ -18,11 +18,10 @@ import static org.lwjgl.glfw.GLFW.*;
 
 public class BlankScene extends Scene {
 
-    GameObject testGo;
+    private final Vector3f movementVector = new Vector3f(0);
     private boolean changingScene = false;
     private float changeTime = 2f;
     private BlockSheet test;
-    private final Vector3f movementVector = new Vector3f(0);
 
     public BlankScene() {
         System.out.println("Blank scene");
@@ -83,17 +82,25 @@ public class BlankScene extends Scene {
         }
 
         if (KeyListener.isKeyDown(GLFW_KEY_W)) {
-            movementVector.add(0, 0, 1);
+            movementVector.z += 1;
         }
         if (KeyListener.isKeyDown(GLFW_KEY_S)) {
-            movementVector.add(0, 0, -1);
+            movementVector.z -= 1;
         }
         if (KeyListener.isKeyDown(GLFW_KEY_D)) {
-            movementVector.add(-1, 0, 0);
+            movementVector.x -= 1;
         }
 
         if (KeyListener.isKeyDown(GLFW_KEY_A)) {
-            movementVector.add(1, 0, 0);
+            movementVector.x += 1;
+        }
+
+        if (KeyListener.isKeyDown(GLFW_KEY_SPACE)) {
+            movementVector.y -= 1;
+        }
+
+        if (KeyListener.isKeyDown(GLFW_KEY_LEFT_SHIFT)) {
+            movementVector.y += 1;
         }
 
         camera.updateAngle(MouseListener.getDxDy());
