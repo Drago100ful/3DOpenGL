@@ -21,8 +21,8 @@ public class Window {
     private static Window window = null;
     private static Scene currentScene = null;
     private final String title;
-    private final int width;
-    private final int height;
+    private int width;
+    private int height;
     public Vector4f rgba = new Vector4f(1);
     private long glfwWindow;
     private boolean cursorEnabled;
@@ -157,6 +157,8 @@ public class Window {
         glfwSetScrollCallback(glfwWindow, MouseListener::mouseScrollCallback);
         // Keyboard
         glfwSetKeyCallback(glfwWindow, KeyListener::keyCallback);
+        // Resize callback
+        glfwSetWindowSizeCallback(glfwWindow, Window::resizeCallback);
 
         // OpenGL current
         glfwMakeContextCurrent(glfwWindow);
@@ -183,6 +185,13 @@ public class Window {
         // Change to blankScene
         Window.changeScene(0);
 
+    }
+
+    private static void resizeCallback(long glfwWindow, int width, int height) {
+        glViewport(0,0, width, height);
+        get().height = height;
+        get().width = width;
+        getCurrentScene().getCamera().adjustProjection();
     }
 
 }
