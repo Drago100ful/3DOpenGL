@@ -30,7 +30,7 @@ public class BlankScene extends Scene {
     @Override
     public void init() {
         Window.setCursor(false);
-        this.camera = new Camera(new Vector3f(0, 0, 0));
+        this.camera = new Camera(new Vector3f(0, -5, -75));
 
         loadResources();
 
