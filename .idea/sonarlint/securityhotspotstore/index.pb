@@ -51,3 +51,13 @@ S
 #src/main/java/components/Block.java,b\a\bad9a799e0c9c32bf5a2f26db80aa7cef2b7f9cf
 X
 (src/main/java/components/BlockSheet.java,3\1\3123713afc3bedc22d2d79b4a66465f3ec2d94fd
+^
+.src/main/java/ruby/util/noise/PerlinNoise.java,c\4\c4bf81b2b51d007f2cc0324c2517685179bca35f
+S
+#src/main/java/components/World.java,5\0\509e9201f3cf37d029a2c73157214e0260aad04e
+M
+src/main/java/ruby/Chunk.java,d\1\d16483d798e881c35f654894c8f196b841621fa3
+T
+$src/main/java/ruby/ChunkManager.java,f\f\ff667737c5ccaccfe8c585765d2b7fa08a924491
+V
+&src/main/java/ruby/TerrainBuilder.java,2\f\2fbcef41c498b2213277e6adddcd5d00d4cd7eea

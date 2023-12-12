@@ -1,0 +1,60 @@
+
+c	java:S112’"FDefine and throw a dedicated exception instead of using a generic one.(å®áÔ8ãêßõÅ1
+u	java:S127Î"XRefactor the code in order to not assign to this loop counter from within the loop body.(áÏ¿8åêßõÅ1
+u	java:S127Ñ"XRefactor the code in order to not assign to this loop counter from within the loop body.(áÏ¿8åêßõÅ1
+u	java:S127Õ"XRefactor the code in order to not assign to this loop counter from within the loop body.(áÏ¿8åêßõÅ1
+u	java:S127Ù"XRefactor the code in order to not assign to this loop counter from within the loop body.(áÏ¿8åêßõÅ1
+u	java:S127İ"XRefactor the code in order to not assign to this loop counter from within the loop body.(áÏ¿8åêßõÅ1
+u	java:S127á"XRefactor the code in order to not assign to this loop counter from within the loop body.(áÏ¿8åêßõÅ1
+t	java:S116"SRename this field "POS_SIZE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ŞÊûüÿÿÿÿ8…ìßõÅ1
+q	java:S116"URename this field "COLOR_SIZE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÕìÓè8…ìßõÅ1
+s	java:S116"RRename this field "UV_SIZE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(üŠâšûÿÿÿÿ8†ìßõÅ1
+s	java:S116"WRename this field "TEXTURE_SIZE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(°‘²È8‡ìßõÅ1
+q	java:S116!"URename this field "POS_OFFSET" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(éô„ı8‰ìßõÅ1
+s	java:S116""WRename this field "COLOR_OFFSET" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(½›âŠ8ŠìßõÅ1
+u	java:S116#"TRename this field "UV_OFFSET" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¹’Üüÿÿÿÿ8ŒìßõÅ1
+t	java:S116$"YRename this field "TEXTURE_OFFSET" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(«ıƒ8ìßõÅ1
+r	java:S116&"VRename this field "VERTEX_SIZE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(î˜ã¦8ìßõÅ1
+x	java:S116'"\Rename this field "VERTEX_SIZE_BYTES" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ôóïñ8ìßõÅ1
+C
+java:S1170"!Make this final field static too.(ŞÊûüÿÿÿÿ8’ìßõÅ1
+>
+java:S1170"!Make this final field static too.(ÕìÓè8’ìßõÅ1
+C
+java:S1170"!Make this final field static too.(üŠâšûÿÿÿÿ8’ìßõÅ1
+>
+java:S1170"!Make this final field static too.(°‘²È8’ìßõÅ1
+>
+java:S1170!"!Make this final field static too.(éô„ı8’ìßõÅ1
+>
+java:S1170""!Make this final field static too.(½›âŠ8’ìßõÅ1
+C
+java:S1170#"!Make this final field static too.(¹’Üüÿÿÿÿ8’ìßõÅ1
+=
+java:S1170$"!Make this final field static too.(«ıƒ8’ìßõÅ1
+>
+java:S1170&"!Make this final field static too.(î˜ã¦8’ìßõÅ1
+>
+java:S1170'"!Make this final field static too.(Ôóïñ8’ìßõÅ1
+E
+java:S1659/"#Declare "vboId" on a separate line.(ª÷ìÂûÿÿÿÿ8“ìßõÅ1
+L
+java:S1172>"/Remove this unused method parameter "genStone".(™Ù8˜ìßõÅ1
+X
+java:S1117a"<Rename "elements" which hides the field declared at line 40.(”ó/8 ìßõÅ1
+o
+java:S3776z"RRefactor this method to reduce its Cognitive Complexity from 55 to the 15 allowed.(í­ê»8¡ìßõÅ1
+d
+java:S1659É"ADeclare "yAdd" and all following declarations on a separate line.(Ö½óûÿÿÿÿ8£ìßõÅ1
+M	java:S106º"+Replace this use of System.out by a logger.(õƒîÿÿÿÿÿ8©ìßõÅ1
+Y	java:S125ì"<This block of commented-out lines of code should be removed.(å¼“Ù8²ìßõÅ1
+^
+java:S1854û";Remove this useless assignment to local variable "offsets".(àà’İÿÿÿÿÿ8²ìßõÅ1
+O
+java:S1481û",Remove this unused "offsets" local variable.(àà’İÿÿÿÿÿ8³ìßõÅ1
+M	java:S106ƒ"+Replace this use of System.out by a logger.(Ó†®şÿÿÿÿ8³ìßõÅ1
+Y	java:S125"<This block of commented-out lines of code should be removed.(å¼“Ù8´ìßõÅ1
+I
+java:S1068(",Remove this unused "elements" private field.(£Ëı—8µìßõÅ1
+ä
+java:S6541z"ÆA "Brain Method" was detected. Refactor it to reduce at least one of the following metrics: LOC from 137 to 64, Complexity from 46 to 14, Nesting Level from 3 to 2, Number of Variables from 20 to 6.(í­ê»8µìßõÅ1

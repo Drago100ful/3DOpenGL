@@ -11,6 +11,8 @@ import ruby.camera.Transform;
 import ruby.listener.KeyListener;
 import ruby.listener.MouseListener;
 import ruby.util.AssetPool;
+import ruby.util.noise.PerlinNoise;
+
 
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -30,27 +32,38 @@ public class BlankScene extends Scene {
     @Override
     public void init() {
         Window.setCursor(false);
-        this.camera = new Camera(new Vector3f(0, -5, -75));
+        this.camera = new Camera(new Vector3f(0, -10, -40));
 
         loadResources();
 
-        int offsetX = 0;
-        int offsetY = 0;
-        int offsetZ = 0;
+        int size = 5;
 
-        float totalWidth = (640 - offsetX * 2);
-        float size = totalWidth / 100;
 
-        for (int x = 0; x < 5; ++x) {
-            for (int y = 0; y < 5; ++y) {
-                for (int z = 0; z < 5; ++z) {
-                    float xPos = offsetX + x * size;
-                    float yPos = offsetY + y * size;
-                    float zPos = offsetZ + z * size;
+//        PerlinNoise perlinNoise = new PerlinNoise();
+//        float[] seed = new float[256*256];
+//
+//        for (int i = 0; i < seed.length; i++) {
+//            seed[i] = ThreadLocalRandom.current().nextFloat(0, 1);
+//        }
+//
+//        float[] noise = perlinNoise.noise2D(256, 256, seed, 6, 0.75f);
+//
+//        perlinNoise.visualize(noise, 256, 2);
+//
+//        for (int x = 0; x < 128; ++x) {
+//            for (int z = 0; z < 128; ++z) {
+//                GameObject block = new GameObject("Block " + x + z, new Transform(new Vector3f(x*size, (int)( Math.floor(noise[x * 256 + z] * 15) * size), z*size), new Vector3f(size)));
+//                block.add(new BlockRenderer(test.getBlock(1)));
+//                this.addGameObjectToScene(block);
+//            }
+//        }
 
-                    GameObject go = new GameObject("Obj " + x + " " + y + " " + z, new Transform(new Vector3f(xPos, yPos, zPos), new Vector3f(size * 0.75f)));
-                    go.add(new BlockRenderer(test.getBlock(ThreadLocalRandom.current().nextInt(0, 4))));
-                    this.addGameObjectToScene(go);
+        for (int x = 0; x < 3; ++x) {
+            for (int y = 0; y < 3; y++) {
+                for (int z = 0; z < 3; ++z) {
+                    GameObject block = new GameObject("Block " + x + y + z, new Transform(new Vector3f(x*size, y*size, z*size), new Vector3f(size)));
+                    block.add(new BlockRenderer(test.getBlock(1)));
+                    this.addGameObjectToScene(block);
                 }
             }
         }
@@ -67,7 +80,7 @@ public class BlankScene extends Scene {
 
     @Override
     public void update(float deltaTime) {
-//        System.out.println("FPS: " + (1 / deltaTime));
+        Window.setTile(String.valueOf((1.0f / deltaTime)));
         movementVector.zero();
 
         if (!changingScene && KeyListener.isKeyDown(GLFW_KEY_C)) {

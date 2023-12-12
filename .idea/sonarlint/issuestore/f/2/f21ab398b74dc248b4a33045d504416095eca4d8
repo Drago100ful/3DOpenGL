@@ -1,5 +1,15 @@
 
 o
-java:S1192>"SDefine a constant instead of duplicating this literal "assets/uv-test.png" 3 times.(ªä§Y8í‰ßÄ1
-L	java:S106"+Replace this use of System.out by a logger.(–­‘Àùÿÿÿÿ8Ë‘‰ßÄ1
-X	java:S125F"<This block of commented-out lines of code should be removed.(”œŒá8Ñ‘‰ßÄ1
+java:S1192K"SDefine a constant instead of duplicating this literal "assets/uv-test.png" 3 times.(ªä§Y8ò–ÈúÄ1
+i
+java:S2184@"GCast one of the operands of this multiplication operation to a "float".(ó”“øùÿÿÿÿ8ó–ÈúÄ1
+i
+java:S2184@"GCast one of the operands of this multiplication operation to a "float".(ó”“øùÿÿÿÿ8ó–ÈúÄ1
+i
+java:S2184@"GCast one of the operands of this multiplication operation to a "float".(ó”“øùÿÿÿÿ8ªöÈúÄ1
+L	java:S106"+Replace this use of System.out by a logger.(–­‘Àùÿÿÿÿ8õ—ÈúÄ1
+]	java:S125*"<This block of commented-out lines of code should be removed.(½­«”ıÿÿÿÿ8ø—ÈúÄ1
+T
+java:S1128"8Remove this unused import 'ruby.util.noise.PerlinNoise'.(šô-8Ñğ¥ûÄ1
+`
+java:S1128"CRemove this unused import 'java.util.concurrent.ThreadLocalRandom'.(¨ÏÙî8Ñğ¥ûÄ1

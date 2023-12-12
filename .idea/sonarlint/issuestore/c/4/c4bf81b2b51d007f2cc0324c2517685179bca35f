@@ -1,0 +1,10 @@
+
+b	java:S112s"FDefine and throw a dedicated exception instead of using a generic one.(Ù¸Í‚8²ØôùÄ1
+`
+java:S3518D">Make sure "scaledBy" can't be zero before doing this division.(»Õì‚ùÿÿÿÿ8ÌØôùÄ1
+[
+java:S3518">Make sure "scaledBy" can't be zero before doing this division.(¼ñ¹Ú8ÌØôùÄ1
+Z
+java:S1854L">Remove this useless assignment to local variable "testWindow".(˜óš/8ğ±õùÄ1
+K
+java:S1481L"/Remove this unused "testWindow" local variable.(˜óš/8ğ±õùÄ1

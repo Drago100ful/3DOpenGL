@@ -53,8 +53,8 @@ public class Camera {
     public void updateAngle(Vector2f mouse) {
         angle.add(mouse.mul(0.5F));
 
-        if (Math.abs(angle.y) >= 180) {
-            angle.y = Math.signum(angle.y) * 180;
+        if (Math.abs(angle.y) >= 90) {
+            angle.y = Math.signum(angle.y) * 90;
         }
 
         angle.x = angle.x % 360;
@@ -64,7 +64,7 @@ public class Camera {
     }
 
     public Matrix4f getViewMatrix() {
-        viewMatrix.identity().rotateX((float) Math.toRadians(-angle.y)).rotateY((float) Math.toRadians(-angle.x)).lookAt(eye, center, up);
+        viewMatrix.identity().rotateX((float) Math.toRadians(-angle.y)).rotateY((float) Math.toRadians(-angle.x)).translate(0, -5, 0).lookAt(eye, center, up);
 
         return viewMatrix;
     }

@@ -71,6 +71,10 @@ public class Window {
         return Window.currentScene;
     }
 
+    public static void setTile(String title) {
+        glfwSetWindowTitle(get().glfwWindow, title);
+    }
+
     public void run() {
         System.out.println("Hello LWJGL " + Version.getVersion() + "!");
 
@@ -183,7 +187,7 @@ public class Window {
         glEnable(GL_CULL_FACE);
 
         // Change to blankScene
-        Window.changeScene(0);
+        Window.changeScene(1);
 
     }
 

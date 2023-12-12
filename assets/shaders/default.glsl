@@ -36,7 +36,7 @@ void main() {
     if (fTextureId > 0) {
         color = fColor * texture(uTextures[int(fTextureId)], fUv);
     } else {
-        color = fColor;
+        color = vec4(fUv, 0, 1);
     }
 
 }

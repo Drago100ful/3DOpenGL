@@ -1,4 +1,4 @@
 
-p	java:S116"TRename this field "MAX_BATCH" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¨†ºˆ8¸¿ø€Ä1
->
-java:S1170"!Make this final field static too.(¨†ºˆ8¹¿ø€Ä1
+u	java:S116"TRename this field "MAX_BATCH" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ÿ‡¯íÿÿÿÿÿ8¸¿ø€Ä1
+C
+java:S1170"!Make this final field static too.(Ÿ‡¯íÿÿÿÿÿ8¹¿ø€Ä1

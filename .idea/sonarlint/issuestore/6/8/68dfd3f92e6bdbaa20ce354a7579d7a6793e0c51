@@ -1,4 +1,15 @@
 
-£
-java:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ÌÆÁŒÿÿÿÿÿ8™ÖÊúÃ1
-G	java:S106"+Replace this use of System.out by a logger.(ŸŒ­‡8‰½ÄúÃ1
+o
+java:S11921"SDefine a constant instead of duplicating this literal "assets/uv-test.png" 3 times.(ªä§Y8ïö ÓÅ1
+{
+java:S1450"YRemove the "blockSheet" field and declare it as a local variable in the relevant methods.(ø˜éƒüÿÿÿÿ8Ü÷ ÓÅ1
+G	java:S106"+Replace this use of System.out by a logger.(ŸŒ­‡8à÷ ÓÅ1
+]	java:S125c"<This block of commented-out lines of code should be removed.(ğÂÒäûÿÿÿÿ8ËèÃÓÅ1
+O
+java:S1128"-Remove this unused import 'components.World'.(¿õâ¹øÿÿÿÿ8­ÀèóÅ1
+M
+java:S1128"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ8­ÀèóÅ1
+M
+java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8­ÀèóÅ1
+P
+java:S1068".Remove this unused "blockSheet" private field.(ø˜éƒüÿÿÿÿ8è÷ ÓÅ1
