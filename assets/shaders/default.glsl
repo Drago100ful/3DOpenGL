@@ -12,9 +12,11 @@ uniform mat4 uProjection;
 out vec4 fColor;
 out vec2 fUv;
 out float fTextureId;
-const int CHUNK_X = 16;
-const int CHUNK_Y = 128;
-const int CHUNK_Z = 16;
+
+const int CHUNK_X = 3;
+const int CHUNK_Y = 3;
+const int CHUNK_Z = 3;
+
 const float packX = 1024 / (CHUNK_X + 1);
 const float packY = 1024 / (CHUNK_Y + 1);
 const float packZ = 1024 / (CHUNK_Z + 1);
@@ -23,7 +25,7 @@ void main() {
     fColor = aColor;
     fUv = aUv;
     fTextureId = aTextureId;
-    gl_Position = uProjection * uView * (uTransform * vec4((aPos >> 20) / packX, ((aPos >> 10) & 1023) / packY, (aPos & 1023) / packZ, 1.0));
+    gl_Position = uProjection * uView * (uTransform * vec4((aPos >> 20) / packX, ((aPos >> 10) & (1023)) / packY, ((aPos) & (1023)) / packZ, 1.0));
 }
 
 #type fragment

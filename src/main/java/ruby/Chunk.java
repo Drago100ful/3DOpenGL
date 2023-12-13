@@ -20,9 +20,9 @@ import static org.lwjgl.opengl.GL30C.glVertexAttribIPointer;
 
 public class Chunk {
 
-    public static final int CHUNK_X = 16;
-    public static final int CHUNK_Y = 128;
-    public static final int CHUNK_Z = 16;
+    public static final int CHUNK_X = 3;
+    public static final int CHUNK_Y = 3;
+    public static final int CHUNK_Z = 3;
     public static final int CHUNK_SIZE = CHUNK_X * CHUNK_Y * CHUNK_Z;
 
 
@@ -175,7 +175,7 @@ public class Chunk {
 
         Vector2f[] uv = block.getUvCoordinates();
 
-        if ((x < 15) && (blocks[x + 1][y][z] != null)) {
+        if ((x < (CHUNK_X-1)) && (blocks[x + 1][y][z] != null)) {
             right = false;
         }
 
@@ -187,11 +187,11 @@ public class Chunk {
             top = false;
         }
 
-        if ((y < 127) && (blocks[x][y + 1][z] != null)) {
+        if ((y < (CHUNK_Y-1)) && (blocks[x][y + 1][z] != null)) {
             bottom = false;
         }
 
-        if ((z < 15) && (blocks[x][y][z + 1] != null)) {
+        if ((z < (CHUNK_Z-1)) && (blocks[x][y][z + 1] != null)) {
             front = false;
         }
 
@@ -199,7 +199,7 @@ public class Chunk {
             back = false;
         }
 
-        float xAdd, yAdd, zAdd;
+        int xAdd, yAdd, zAdd;
 
 
         for (int i = 0; i < 24; i++) {
@@ -227,52 +227,54 @@ public class Chunk {
             }
 
             if (i == 24) {
-                break;
+                continue;
             }
+            xAdd = 0;
+            yAdd = 0;
+            zAdd = 0;
 
             switch (i) {
                 //   FL
                 case 0, 21, 7 -> {
-                    xAdd = 1f;
-                    yAdd = 1f;
-                    zAdd = 0f;
+                    xAdd = 1;
+                    yAdd = 1;
+                    zAdd = 1;
                 }
                 case 1, 16, 6 -> {
-                    xAdd = 1f;
-                    yAdd = 0f;
-                    zAdd = 0f;
+                    xAdd = 1;
+                    yAdd = 0;
+                    zAdd = 1;
                 }
                 case 2, 19, 9 -> {
-                    xAdd = 0f;
-                    yAdd = 0f;
-                    zAdd = 0f;
+                    xAdd = 0;
+                    yAdd = 0;
+                    zAdd = 1;
                 }
                 case 3, 22, 8 -> {
-                    xAdd = 0f;
-                    yAdd = 1f;
-                    zAdd = 0f;
+                    xAdd = 0;
+                    yAdd = 1;
+                    zAdd = 1;
                 }
                 case 4, 20, 15 -> {
-                    xAdd = 1f;
-                    yAdd = 1f;
-                    zAdd = 1f;
+                    xAdd = 1;
+                    yAdd = 1;
+                    zAdd = 0;
                 }
                 case 5, 17, 14 -> {
-                    xAdd = 1f;
-                    yAdd = 0f;
-                    zAdd = 1f;
+                    xAdd = 1;
+                    yAdd = 0;
+                    zAdd = 0;
                 }
                 case 10, 18, 13 -> {
-                    xAdd = 0f;
-                    yAdd = 0f;
-                    zAdd = 1f;
+                    xAdd = 0;
+                    yAdd = 0;
+                    zAdd = 0;
                 }
                 case 11, 23, 12 -> {
-                    xAdd = 0f;
-                    yAdd = 1f;
-                    zAdd = 1f;
+                    xAdd = 0;
+                    yAdd = 1;
+                    zAdd = 0;
                 }
-                default -> throw new RuntimeException("Unexpected vertex case: " + i);
             }
 
             int packLimit = 1024;
@@ -280,12 +282,16 @@ public class Chunk {
             int packFactorY = packLimit / (CHUNK_Y + 1);
             int packFactorZ = packLimit / (CHUNK_Z + 1);
 
-            int packedX = (int) ((x + xAdd) * packFactorX);
-            int packedY = (int) ((y + yAdd) * packFactorY);
-            int packedZ = (int) ((z - zAdd) * packFactorZ);
+            int packedX = (x + xAdd) * packFactorX;
+            int packedY = (y + yAdd) * packFactorY;
+            int packedZ = (z + zAdd) * packFactorZ;
 
             int pos = (packedX << 20) | (packedY << 10) | packedZ;
-
+            System.out.println("x: " + x + " y: " + y + " z: " +z );
+            System.out.println(Integer.toBinaryString(((pos >> 20 )& 0x3FF)));
+            System.out.println(Integer.toBinaryString(((pos >> 10 )& 0x3FF)));
+            System.out.println(Integer.toBinaryString((pos & 0x3FF)));
+            System.out.println("----");
 
             // Load Position
             vertices[offset] = Float.intBitsToFloat(pos);
@@ -349,7 +355,7 @@ public class Chunk {
         glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices, GL_STATIC_DRAW);
 
         // Enable buffer attribute pointers
-        glVertexAttribIPointer(0, POS_SIZE, GL_INT, VERTEX_SIZE_BYTES, POS_OFFSET);
+        glVertexAttribIPointer(0, POS_SIZE, GL_UNSIGNED_INT, VERTEX_SIZE_BYTES, POS_OFFSET);
         glEnableVertexAttribArray(0);
 
         glVertexAttribPointer(1, COLOR_SIZE, GL_FLOAT, false, VERTEX_SIZE_BYTES, COLOR_OFFSET);
