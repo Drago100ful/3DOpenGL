@@ -4,6 +4,7 @@ import components.Block;
 import org.joml.Vector2f;
 import org.joml.Vector3f;
 import ruby.renderer.Shader;
+import ruby.renderer.Texture;
 import ruby.util.AssetPool;
 
 import java.util.ArrayList;
@@ -51,10 +52,10 @@ public class Chunk {
     private int xPos;
     private int zPos;
 
-    private final int[] elements = new int[36 * CHUNK_SIZE * 24 * VERTEX_SIZE];
     private final float[] vertices = new float[CHUNK_SIZE * 24 * VERTEX_SIZE];
     private final int[] texSlots = IntStream.range(0, 8).toArray();
     private final ArrayList<Integer> changedVoxels = new ArrayList<>();
+    private final ArrayList<Texture> textures = new ArrayList<>();
 
     private Shader shader;
     private int vaoId, vboId;
@@ -86,7 +87,7 @@ public class Chunk {
         for (int x = 0; x < CHUNK_X; x++) {
             for (int y = 0; y < CHUNK_Y; y++) {
                 for (int z = 0; z < CHUNK_Z; z++) {
-                    blocks[x][y][z] = stone;
+                    setBlock(stone, x, y, z);
                 }
             }
         }
@@ -113,20 +114,24 @@ public class Chunk {
         return blocks[x][y][z];
     }
 
-    public void setBlock(Block block, int x, int y, int z) {
-        blocks[x][y][z] = block;
-        dirtyBlocks.add(new Vector3f(x, y, z));
-        this.isDirty = true;
+    private static int generateBlockPosition(int x, int y, int z) {
+        return y * 2 * CHUNK_Y + x * CHUNK_X + z;
     }
 
-    public int[] generateIndices() {
-        // 6 indices per Quad (3 per Tri)
-        int[] elements = new int[36 * CHUNK_SIZE];
-        for (int i = 0; i < CHUNK_SIZE; ++i) {
-            generateBlockIndices(elements, i);
+    public void setBlock(Block block, int x, int y, int z) {
+        blocks[x][y][z] = block;
+
+        if (block != null) {
+            Texture texture = block.getTexture();
+
+            if ((texture != null) && (!textures.contains(texture))) {
+                textures.add(texture);
+            }
         }
 
-        return elements;
+
+        dirtyBlocks.add(new Vector3f(x, y, z));
+        this.isDirty = true;
     }
 
     private void generateBlockIndices(int[] elements, int index) {
@@ -280,36 +285,46 @@ public class Chunk {
 
             int pos = (packedX << 20) | (packedY << 10) | packedZ;
 
+            boolean hasTexture = block.hasTexture();
+            int textureId = 0;
+
+            if (hasTexture) {
+                Texture texture = block.getTexture();
+                for (int t = 0; t < textures.size(); t++) {
+                    if (textures.get(t) == texture) {
+                        textureId = t + 1;
+                        break;
+                    }
+                }
+            }
+
             // Load Position
             vertices[offset] = Float.intBitsToFloat(pos);
             // Load Color
-            vertices[offset + 1] = 0.5f;
-            vertices[offset + 2] = 0.5f;
-            vertices[offset + 3] = 0.5f;
+            vertices[offset + 1] = 1f;
+            vertices[offset + 2] = 1f;
+            vertices[offset + 3] = 1f;
             vertices[offset + 4] = 1f;
 
             // Load UV
-            vertices[offset + 5] = uv[i].x;
-            vertices[offset + 6] = uv[i].y;
+            vertices[offset + 5] = hasTexture ? uv[i].x : 0;
+            vertices[offset + 6] = hasTexture ? uv[i].y : 0;
 
             // Load TextureId
-            vertices[offset + 7] = 0;
+            vertices[offset + 7] = textureId;
 
             offset += VERTEX_SIZE;
         }
     }
 
-    private void generateVertexData() {
-        int index = 0;
-
-        for (int y = 0; y < CHUNK_Y; y++) {
-            for (int x = 0; x < CHUNK_X; x++) {
-                for (int z = 0; z < CHUNK_Z; z++) {
-                    generateVoxel(x, y, z, index, false);
-                    index++;
-                }
-            }
+    private int[] generateIndices() {
+        // 6 indices per Quad (3 per Tri)
+        int[] elements = new int[36 * CHUNK_SIZE];
+        for (int i = 0; i < CHUNK_SIZE; ++i) {
+            generateBlockIndices(elements, i);
         }
+
+        return elements;
     }
 
     private ArrayList<Integer> regenerateVoxel(Vector3f pos) {
@@ -324,7 +339,7 @@ public class Chunk {
 
         generateVoxel(x, y, z, currentBlock, true);
 
-        if (x < CHUNK_X) {
+        if (x < (CHUNK_X - 1)) {
             currentBlock = generateBlockPosition(x + 1, y, z);
             changedVoxels.add(currentBlock * offset);
             generateVoxel(x + 1, y, z, currentBlock, true);
@@ -336,7 +351,7 @@ public class Chunk {
             generateVoxel(x - 1, y, z, currentBlock, true);
         }
 
-        if (y < CHUNK_Y) {
+        if (y < (CHUNK_Y - 1)) {
             currentBlock = generateBlockPosition(x, y + 1, z);
             changedVoxels.add(currentBlock * offset);
             generateVoxel(x, y + 1, z, currentBlock, true);
@@ -349,7 +364,7 @@ public class Chunk {
 
         }
 
-        if (z < CHUNK_Z) {
+        if (z < (CHUNK_Z - 1)) {
             currentBlock = generateBlockPosition(x, y, z + 1);
             changedVoxels.add(currentBlock * offset);
             generateVoxel(x, y, z + 1, currentBlock, true);
@@ -364,8 +379,17 @@ public class Chunk {
         return changedVoxels;
     }
 
-    private int generateBlockPosition(int x, int y, int z) {
-        return y * 2 * CHUNK_Y + x * CHUNK_X + z;
+    public void generateVertexData() {
+        int index = 0;
+
+        for (int y = 0; y < CHUNK_Y; y++) {
+            for (int x = 0; x < CHUNK_X; x++) {
+                for (int z = 0; z < CHUNK_Z; z++) {
+                    generateVoxel(x, y, z, index, false);
+                    index++;
+                }
+            }
+        }
     }
 
     public void start() {
@@ -400,18 +424,11 @@ public class Chunk {
 
     }
 
-    public void destroy() {
+    public void unbind() {
         glDisableVertexAttribArray(0);
         glDisableVertexAttribArray(1);
         glDisableVertexAttribArray(2);
         glDisableVertexAttribArray(3);
-
-
-//        for (int i = 0; i < textures.size(); ++i) {
-//            glActiveTexture(GL_TEXTURE0 + 1 + i);
-//            textures.get(i).unbind();
-//        }
-
 
         glBindVertexArray(0);
 
@@ -446,19 +463,25 @@ public class Chunk {
         // Use shader
         shader.use();
 
-        shader.uploadMat4f(Window.getCurrentScene().getCamera().getTransformationMatrix(), "uTransform");
+        shader.uploadMat4f(Window.getCurrentScene().getCamera().getTransformationMatrix().scale(Block.BLOCK_SIZE).translate((xPos * CHUNK_X), 0, (zPos * CHUNK_Z)), "uTransform");
         shader.uploadMat4f(Window.getCurrentScene().getCamera().getProjectionMatrix(), "uProjection");
         shader.uploadMat4f(Window.getCurrentScene().getCamera().getViewMatrix(), "uView");
-//
-//        for (int i = 0; i < textures.size(); ++i) {
-//            glActiveTexture(GL_TEXTURE0 + 1 + i);
-//            textures.get(i).bind();
-//        }
+
+        for (int i = 0; i < textures.size(); ++i) {
+            glActiveTexture(GL_TEXTURE0 + 1 + i);
+            textures.get(i).bind();
+        }
 
         shader.uploadIntArray(texSlots, "uTextures");
         glBindVertexArray(vaoId);
 
         glDrawElements(GL_TRIANGLES, CHUNK_SIZE * 36, GL_UNSIGNED_INT, 0);
+
+
+        for (int i = 0; i < textures.size(); ++i) {
+            glActiveTexture(GL_TEXTURE0 + 1 + i);
+            textures.get(i).unbind();
+        }
 
         shader.detach();
     }

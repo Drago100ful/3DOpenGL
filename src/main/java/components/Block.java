@@ -5,6 +5,8 @@ import ruby.renderer.Texture;
 
 public class Block {
 
+    public static final int BLOCK_SIZE = 10;
+
     private Texture texture;
     private Vector2f[] uvCoordinates;
 
@@ -22,6 +24,10 @@ public class Block {
     public Block(Texture texture, Vector2f[] uv) {
         this.texture = texture;
         this.uvCoordinates = uv;
+    }
+
+    public boolean hasTexture() {
+        return texture != null;
     }
 
     public Texture getTexture() {

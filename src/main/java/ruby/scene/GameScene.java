@@ -23,6 +23,7 @@ public class GameScene extends Scene {
     private final Vector3f movementVector = new Vector3f(0);
     private BlockSheet blockSheet;
     private Chunk chunk;
+    private Chunk chunk2;
 
     public GameScene() {
         System.out.println("GameScene");
@@ -39,7 +40,11 @@ public class GameScene extends Scene {
         this.camera.setAngle(new Vector2f(0, 0));
 
         chunk = new Chunk(true);
+        chunk2 = new Chunk(true);
+        chunk2.setX(1);
+        chunk2.setZ(1);
         chunk.start();
+        chunk2.start();
 
 
     }
@@ -91,6 +96,7 @@ public class GameScene extends Scene {
         camera.translatePosition(movementVector);
 
         chunk.render();
+        chunk2.render();
 
         for (GameObject go : this.gameObjects) {
             go.update(deltaTime);
