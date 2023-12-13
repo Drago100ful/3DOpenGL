@@ -16,6 +16,7 @@ import static org.lwjgl.opengl.GL15.*;
 import static org.lwjgl.opengl.GL20.*;
 import static org.lwjgl.opengl.GL30.glBindVertexArray;
 import static org.lwjgl.opengl.GL30.glGenVertexArrays;
+import static org.lwjgl.opengl.GL30C.glVertexAttribIPointer;
 
 public class Chunk {
 
@@ -25,7 +26,7 @@ public class Chunk {
     public static final int CHUNK_SIZE = CHUNK_X * CHUNK_Y * CHUNK_Z;
 
 
-    private final int POS_SIZE = 3;
+    private final int POS_SIZE = 1;
     private final int COLOR_SIZE = 4;
     private final int UV_SIZE = 2;
     private final int TEXTURE_SIZE = 1;
@@ -274,24 +275,32 @@ public class Chunk {
                 default -> throw new RuntimeException("Unexpected vertex case: " + i);
             }
 
+            int packLimit = 1024;
+            int packFactorX = packLimit / (CHUNK_X + 1);
+            int packFactorY = packLimit / (CHUNK_Y + 1);
+            int packFactorZ = packLimit / (CHUNK_Z + 1);
+
+            int packedX = (int) ((x + xAdd) * packFactorX);
+            int packedY = (int) ((y + yAdd) * packFactorY);
+            int packedZ = (int) ((z - zAdd) * packFactorZ);
+
+            int pos = (packedX << 20) | (packedY << 10) | packedZ;
+
 
             // Load Position
-            vertices[offset] = (xPos + x * 5) + (xAdd * 5);
-            vertices[offset + 1] = y * 5 + (yAdd * 5);
-            vertices[offset + 2] = (zPos + z * 5) - (zAdd * 5);
-
+            vertices[offset] = Float.intBitsToFloat(pos);
             // Load Color
+            vertices[offset + 1] = 0.5f;
+            vertices[offset + 2] = 0.5f;
             vertices[offset + 3] = 0.5f;
-            vertices[offset + 4] = 0.5f;
-            vertices[offset + 5] = 0.5f;
-            vertices[offset + 6] = 1f;
+            vertices[offset + 4] = 1f;
 
             // Load UV
-            vertices[offset + 7] = uv[i].x;
-            vertices[offset + 8] = uv[i].y;
+            vertices[offset + 5] = uv[i].x;
+            vertices[offset + 6] = uv[i].y;
 
             // Load TextureId
-            vertices[offset + 9] = 0;
+            vertices[offset + 7] = 0;
 
             offset += VERTEX_SIZE;
         }
@@ -340,7 +349,7 @@ public class Chunk {
         glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices, GL_STATIC_DRAW);
 
         // Enable buffer attribute pointers
-        glVertexAttribPointer(0, POS_SIZE, GL_FLOAT, false, VERTEX_SIZE_BYTES, POS_OFFSET);
+        glVertexAttribIPointer(0, POS_SIZE, GL_INT, VERTEX_SIZE_BYTES, POS_OFFSET);
         glEnableVertexAttribArray(0);
 
         glVertexAttribPointer(1, COLOR_SIZE, GL_FLOAT, false, VERTEX_SIZE_BYTES, COLOR_OFFSET);
@@ -382,6 +391,7 @@ public class Chunk {
             }
 
             long start = System.nanoTime();
+
             glBindBuffer(GL_ARRAY_BUFFER, vboId);
             glBufferSubData(GL_ARRAY_BUFFER, 0, vertices);
             System.out.println("Buffering took: " + (float) ((System.nanoTime()-start)*1E-9));
