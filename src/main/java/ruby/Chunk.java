@@ -3,11 +3,9 @@ package ruby;
 import components.Block;
 import org.joml.Vector2f;
 import org.joml.Vector3f;
-import org.lwjgl.vulkan.VkExportMetalTextureInfoEXT;
 import ruby.renderer.Shader;
 import ruby.util.AssetPool;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -42,17 +40,16 @@ public class Chunk {
     private final int VERTEX_SIZE = POS_SIZE + COLOR_SIZE + UV_SIZE + TEXTURE_SIZE;
     private final int VERTEX_SIZE_BYTES = VERTEX_SIZE * Float.BYTES;
     private final int[] elements = new int[36 * CHUNK_SIZE * 24 * VERTEX_SIZE];
+    private final float[] vertices = new float[CHUNK_SIZE * 24 * VERTEX_SIZE];
     private final Block[][][] blocks;
     private final int[] texSlots = IntStream.range(0, 8).toArray();
-    private final float[] vertices = new float[CHUNK_SIZE * 24 * VERTEX_SIZE];
+    private final ArrayList<Integer> changedVoxels = new ArrayList<>();
     private int xPos;
     private int zPos;
     private Shader shader;
     private int vaoId, vboId;
-
     private boolean isDirty = true;
-    private List<Vector3f> dirtyBlocks = new ArrayList<>();
-
+    private final List<Vector3f> dirtyBlocks = new ArrayList<>();
 
     public Chunk() {
 
@@ -151,7 +148,7 @@ public class Chunk {
 
         Vector2f[] uv = block.getUvCoordinates();
 
-        if ((x < (CHUNK_X-1)) && (blocks[x + 1][y][z] != null)) {
+        if ((x < (CHUNK_X - 1)) && (blocks[x + 1][y][z] != null)) {
             right = false;
         }
 
@@ -163,11 +160,11 @@ public class Chunk {
             top = false;
         }
 
-        if ((y < (CHUNK_Y-1)) && (blocks[x][y + 1][z] != null)) {
+        if ((y < (CHUNK_Y - 1)) && (blocks[x][y + 1][z] != null)) {
             bottom = false;
         }
 
-        if ((z < (CHUNK_Z-1)) && (blocks[x][y][z + 1] != null)) {
+        if ((z < (CHUNK_Z - 1)) && (blocks[x][y][z + 1] != null)) {
             front = false;
         }
 
@@ -199,7 +196,7 @@ public class Chunk {
             }
 
             if (i == 20 && !bottom) {
-                i+=4;
+                i += 4;
             }
 
             if (i == 24) {
@@ -349,7 +346,7 @@ public class Chunk {
     }
 
     private int generateBlockPosition(int x, int y, int z) {
-        return y*2*CHUNK_Y + x * CHUNK_X + z;
+        return y * 2 * CHUNK_Y + x * CHUNK_X + z;
     }
 
     public void start() {
@@ -401,10 +398,8 @@ public class Chunk {
         shader.detach();
     }
 
-
     public void render() {
         if (isDirty) {
-            ArrayList<Integer> changedVoxels = new ArrayList<>();
             for (Vector3f dirtyBlock : dirtyBlocks) {
                 changedVoxels.addAll(regenerateVoxel(dirtyBlock));
             }
@@ -415,17 +410,16 @@ public class Chunk {
 
             if (!changedVoxels.isEmpty()) {
                 for (int offset : changedVoxels) {
-                     glBufferSubData(GL_ARRAY_BUFFER,
-                               (offset * Float.BYTES),
-                                     Arrays.copyOfRange(vertices, offset, offset+(24*VERTEX_SIZE)));
+                    glBufferSubData(GL_ARRAY_BUFFER, ((long) offset * Float.BYTES), Arrays.copyOfRange(vertices, offset, offset + (24 * VERTEX_SIZE)));
                 }
 
             } else {
                 glBufferSubData(GL_ARRAY_BUFFER, 0, vertices);
             }
-            System.out.println("Buffering took: " + (float) ((System.nanoTime()-start)*1E-9));
+            System.out.println("Buffering took: " + (float) ((System.nanoTime() - start) * 1E-9));
 
             dirtyBlocks.clear();
+            changedVoxels.clear();
             isDirty = false;
         }
 
