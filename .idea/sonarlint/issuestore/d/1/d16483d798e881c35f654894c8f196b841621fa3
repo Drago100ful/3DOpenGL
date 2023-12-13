@@ -46,19 +46,14 @@ java:S3776{"RRefactor this method to reduce its Cognitive Complexity from 55 to
 d
 java:S1659Ê"ADeclare "yAdd" and all following declarations on a separate line.(é»æªúÿÿÿÿ8¡ğ¬Æ1
 >	java:S131ì""Add a default case to this switch.(ìúÇV8¤ğ¬Æ1
-M	java:S106¢"+Replace this use of System.out by a logger.(ÜËÜÜıÿÿÿÿ8¥ğ¬Æ1
-H	java:S106£"+Replace this use of System.out by a logger.(ç˜€¢8¥ğ¬Æ1
-H	java:S106¤"+Replace this use of System.out by a logger.(á­°Í8¥ğ¬Æ1
-M	java:S106¥"+Replace this use of System.out by a logger.(±å™üÿÿÿÿ8¥ğ¬Æ1
-H	java:S106¦"+Replace this use of System.out by a logger.(ÅªäŞ8¥ğ¬Æ1
-M	java:S106É"+Replace this use of System.out by a logger.(õƒîÿÿÿÿÿ8§ğ¬Æ1
-Y	java:S125û"<This block of commented-out lines of code should be removed.(å¼“Ù8ªğ¬Æ1
+M	java:S106Ä"+Replace this use of System.out by a logger.(õƒîÿÿÿÿÿ8§ğ¬Æ1
+Y	java:S125ö"<This block of commented-out lines of code should be removed.(å¼“Ù8ªğ¬Æ1
 ^
-java:S1854Š";Remove this useless assignment to local variable "offsets".(àà’İÿÿÿÿÿ8ªğ¬Æ1
+java:S1854…";Remove this useless assignment to local variable "offsets".(àà’İÿÿÿÿÿ8ªğ¬Æ1
 O
-java:S1481Š",Remove this unused "offsets" local variable.(àà’İÿÿÿÿÿ8«ğ¬Æ1
-M	java:S106“"+Replace this use of System.out by a logger.(Ó†®şÿÿÿÿ8¬ğ¬Æ1
-Y	java:S125Ÿ"<This block of commented-out lines of code should be removed.(å¼“Ù8­ğ¬Æ1
+java:S1481…",Remove this unused "offsets" local variable.(àà’İÿÿÿÿÿ8«ğ¬Æ1
+M	java:S106"+Replace this use of System.out by a logger.(Ó†®şÿÿÿÿ8¬ğ¬Æ1
+Y	java:S125š"<This block of commented-out lines of code should be removed.(å¼“Ù8­ğ¬Æ1
 I
 java:S1068)",Remove this unused "elements" private field.(£Ëı—8®ğ¬Æ1
 J
@@ -66,4 +61,4 @@ java:S1068-"(Remove this unused "xPos" private field.(ääùŸşÿÿÿÿ8®ğ¬Æ1
 E
 java:S1068."(Remove this unused "zPos" private field.(‚¸èÃ8®ğ¬Æ1
 ä
-java:S6541{"ÆA "Brain Method" was detected. Refactor it to reduce at least one of the following metrics: LOC from 150 to 64, Complexity from 46 to 14, Nesting Level from 3 to 2, Number of Variables from 28 to 6.(í­ê»8¯ğ¬Æ1
+java:S6541{"ÆA "Brain Method" was detected. Refactor it to reduce at least one of the following metrics: LOC from 145 to 64, Complexity from 46 to 14, Nesting Level from 3 to 2, Number of Variables from 28 to 6.(í­ê»8¯ğ¬Æ1

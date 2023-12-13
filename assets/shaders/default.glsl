@@ -13,9 +13,9 @@ out vec4 fColor;
 out vec2 fUv;
 out float fTextureId;
 
-const int CHUNK_X = 3;
-const int CHUNK_Y = 3;
-const int CHUNK_Z = 3;
+const int CHUNK_X = 16;
+const int CHUNK_Y = 128;
+const int CHUNK_Z = 16;
 
 const float packX = 1024 / (CHUNK_X + 1);
 const float packY = 1024 / (CHUNK_Y + 1);

@@ -20,9 +20,9 @@ import static org.lwjgl.opengl.GL30C.glVertexAttribIPointer;
 
 public class Chunk {
 
-    public static final int CHUNK_X = 3;
-    public static final int CHUNK_Y = 3;
-    public static final int CHUNK_Z = 3;
+    public static final int CHUNK_X = 16;
+    public static final int CHUNK_Y = 128;
+    public static final int CHUNK_Z = 16;
     public static final int CHUNK_SIZE = CHUNK_X * CHUNK_Y * CHUNK_Z;
 
 
@@ -277,7 +277,7 @@ public class Chunk {
                 }
             }
 
-            int packLimit = 1024;
+            int packLimit = 1024; // 2^10 / 10 bit
             int packFactorX = packLimit / (CHUNK_X + 1);
             int packFactorY = packLimit / (CHUNK_Y + 1);
             int packFactorZ = packLimit / (CHUNK_Z + 1);
@@ -287,11 +287,6 @@ public class Chunk {
             int packedZ = (z + zAdd) * packFactorZ;
 
             int pos = (packedX << 20) | (packedY << 10) | packedZ;
-            System.out.println("x: " + x + " y: " + y + " z: " +z );
-            System.out.println(Integer.toBinaryString(((pos >> 20 )& 0x3FF)));
-            System.out.println(Integer.toBinaryString(((pos >> 10 )& 0x3FF)));
-            System.out.println(Integer.toBinaryString((pos & 0x3FF)));
-            System.out.println("----");
 
             // Load Position
             vertices[offset] = Float.intBitsToFloat(pos);
