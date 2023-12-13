@@ -1,64 +1,61 @@
 
-u	java:S127Ï"XRefactor the code in order to not assign to this loop counter from within the loop body.(áÏ¿8¶²¯Æ1
-u	java:S127Ò"XRefactor the code in order to not assign to this loop counter from within the loop body.(áÏ¿8¶²¯Æ1
-u	java:S127Ö"XRefactor the code in order to not assign to this loop counter from within the loop body.(áÏ¿8¶²¯Æ1
-u	java:S127Ú"XRefactor the code in order to not assign to this loop counter from within the loop body.(áÏ¿8¶²¯Æ1
-u	java:S127Ş"XRefactor the code in order to not assign to this loop counter from within the loop body.(áÏ¿8¶²¯Æ1
-u	java:S127â"XRefactor the code in order to not assign to this loop counter from within the loop body.(áÏ¿8·²¯Æ1
-t	java:S116"SRename this field "POS_SIZE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÁâæŞúÿÿÿÿ8‘ğ¬Æ1
-q	java:S116"URename this field "COLOR_SIZE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÕìÓè8’ğ¬Æ1
-s	java:S116"RRename this field "UV_SIZE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(üŠâšûÿÿÿÿ8’ğ¬Æ1
-s	java:S116 "WRename this field "TEXTURE_SIZE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(°‘²È8’ğ¬Æ1
-q	java:S116""URename this field "POS_OFFSET" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(éô„ı8’ğ¬Æ1
-s	java:S116#"WRename this field "COLOR_OFFSET" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(½›âŠ8’ğ¬Æ1
-u	java:S116$"TRename this field "UV_OFFSET" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¹’Üüÿÿÿÿ8’ğ¬Æ1
-t	java:S116%"YRename this field "TEXTURE_OFFSET" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(«ıƒ8’ğ¬Æ1
-r	java:S116'"VRename this field "VERTEX_SIZE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(î˜ã¦8’ğ¬Æ1
-x	java:S116("\Rename this field "VERTEX_SIZE_BYTES" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ôóïñ8’ğ¬Æ1
+u	java:S127·"XRefactor the code in order to not assign to this loop counter from within the loop body.(áÏ¿8•àÂŸÆ1
+u	java:S127º"XRefactor the code in order to not assign to this loop counter from within the loop body.(áÏ¿8–àÂŸÆ1
+u	java:S127¾"XRefactor the code in order to not assign to this loop counter from within the loop body.(áÏ¿8–àÂŸÆ1
+u	java:S127Â"XRefactor the code in order to not assign to this loop counter from within the loop body.(áÏ¿8–àÂŸÆ1
+u	java:S127Æ"XRefactor the code in order to not assign to this loop counter from within the loop body.(áÏ¿8–àÂŸÆ1
+u	java:S127Ê"XRefactor the code in order to not assign to this loop counter from within the loop body.(áÏ¿8–àÂŸÆ1
+t	java:S116 "SRename this field "POS_SIZE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÁâæŞúÿÿÿÿ8ÔáÂŸÆ1
+q	java:S116!"URename this field "COLOR_SIZE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÕìÓè8ÔáÂŸÆ1
+s	java:S116""RRename this field "UV_SIZE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(üŠâšûÿÿÿÿ8ÔáÂŸÆ1
+s	java:S116#"WRename this field "TEXTURE_SIZE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(°‘²È8ÔáÂŸÆ1
+q	java:S116%"URename this field "POS_OFFSET" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(éô„ı8ÔáÂŸÆ1
+s	java:S116&"WRename this field "COLOR_OFFSET" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(½›âŠ8ÔáÂŸÆ1
+u	java:S116'"TRename this field "UV_OFFSET" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¹’Üüÿÿÿÿ8ÔáÂŸÆ1
+t	java:S116("YRename this field "TEXTURE_OFFSET" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(«ıƒ8ÔáÂŸÆ1
+r	java:S116*"VRename this field "VERTEX_SIZE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(î˜ã¦8ÔáÂŸÆ1
+x	java:S116+"\Rename this field "VERTEX_SIZE_BYTES" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ôóïñ8ÔáÂŸÆ1
 C
-java:S1170"!Make this final field static too.(ÁâæŞúÿÿÿÿ8’ğ¬Æ1
+java:S1170 "!Make this final field static too.(ÁâæŞúÿÿÿÿ8ÕáÂŸÆ1
 >
-java:S1170"!Make this final field static too.(ÕìÓè8’ğ¬Æ1
+java:S1170!"!Make this final field static too.(ÕìÓè8ÕáÂŸÆ1
 C
-java:S1170"!Make this final field static too.(üŠâšûÿÿÿÿ8’ğ¬Æ1
+java:S1170""!Make this final field static too.(üŠâšûÿÿÿÿ8ÕáÂŸÆ1
 >
-java:S1170 "!Make this final field static too.(°‘²È8’ğ¬Æ1
+java:S1170#"!Make this final field static too.(°‘²È8ÕáÂŸÆ1
 >
-java:S1170""!Make this final field static too.(éô„ı8’ğ¬Æ1
+java:S1170%"!Make this final field static too.(éô„ı8ÕáÂŸÆ1
 >
-java:S1170#"!Make this final field static too.(½›âŠ8’ğ¬Æ1
+java:S1170&"!Make this final field static too.(½›âŠ8ÕáÂŸÆ1
 C
-java:S1170$"!Make this final field static too.(¹’Üüÿÿÿÿ8’ğ¬Æ1
+java:S1170'"!Make this final field static too.(¹’Üüÿÿÿÿ8ÕáÂŸÆ1
 =
-java:S1170%"!Make this final field static too.(«ıƒ8’ğ¬Æ1
+java:S1170("!Make this final field static too.(«ıƒ8ÕáÂŸÆ1
 >
-java:S1170'"!Make this final field static too.(î˜ã¦8’ğ¬Æ1
+java:S1170*"!Make this final field static too.(î˜ã¦8ÕáÂŸÆ1
 >
-java:S1170("!Make this final field static too.(Ôóïñ8’ğ¬Æ1
+java:S1170+"!Make this final field static too.(Ôóïñ8ÕáÂŸÆ1
 E
-java:S16590"#Declare "vboId" on a separate line.(ª÷ìÂûÿÿÿÿ8“ğ¬Æ1
+java:S16593"#Declare "vboId" on a separate line.(ª÷ìÂûÿÿÿÿ8ÖáÂŸÆ1
 L
-java:S1172?"/Remove this unused method parameter "genStone".(™Ù8˜ğ¬Æ1
+java:S1172B"/Remove this unused method parameter "genStone".(™Ù8ÚáÂŸÆ1
 X
-java:S1117b"<Rename "elements" which hides the field declared at line 41.(”ó/8ğ¬Æ1
+java:S1117e"<Rename "elements" which hides the field declared at line 44.(”ó/8ßáÂŸÆ1
 o
-java:S3776{"RRefactor this method to reduce its Cognitive Complexity from 55 to the 15 allowed.(í­ê»8 ğ¬Æ1
+java:S3776~"RRefactor this method to reduce its Cognitive Complexity from 43 to the 15 allowed.(í­ê»8àáÂŸÆ1
 d
-java:S1659Ê"ADeclare "yAdd" and all following declarations on a separate line.(é»æªúÿÿÿÿ8¡ğ¬Æ1
->	java:S131ì""Add a default case to this switch.(ìúÇV8¤ğ¬Æ1
-M	java:S106Ä"+Replace this use of System.out by a logger.(õƒîÿÿÿÿÿ8§ğ¬Æ1
-Y	java:S125ö"<This block of commented-out lines of code should be removed.(å¼“Ù8ªğ¬Æ1
-^
-java:S1854…";Remove this useless assignment to local variable "offsets".(àà’İÿÿÿÿÿ8ªğ¬Æ1
-O
-java:S1481…",Remove this unused "offsets" local variable.(àà’İÿÿÿÿÿ8«ğ¬Æ1
-M	java:S106"+Replace this use of System.out by a logger.(Ó†®şÿÿÿÿ8¬ğ¬Æ1
-Y	java:S125š"<This block of commented-out lines of code should be removed.(å¼“Ù8­ğ¬Æ1
+java:S1659²"ADeclare "yAdd" and all following declarations on a separate line.(é»æªúÿÿÿÿ8ááÂŸÆ1
+>	java:S131Ô""Add a default case to this switch.(ìúÇV8âáÂŸÆ1
+Y	java:S125‰"<This block of commented-out lines of code should be removed.(å¼“Ù8çáÂŸÆ1
+M	java:S106ª"+Replace this use of System.out by a logger.(Ó†®şÿÿÿÿ8éáÂŸÆ1
+Y	java:S125·"<This block of commented-out lines of code should be removed.(å¼“Ù8êáÂŸÆ1
+k
+java:S1128"IRemove this unused import 'org.lwjgl.vulkan.VkExportMetalTextureInfoEXT'.(Ãê÷ôşÿÿÿÿ8êáÂŸÆ1
 I
-java:S1068)",Remove this unused "elements" private field.(£Ëı—8®ğ¬Æ1
+java:S1068,",Remove this unused "elements" private field.(£Ëı—8êáÂŸÆ1
 J
-java:S1068-"(Remove this unused "xPos" private field.(ääùŸşÿÿÿÿ8®ğ¬Æ1
+java:S10680"(Remove this unused "xPos" private field.(ääùŸşÿÿÿÿ8ëáÂŸÆ1
 E
-java:S1068."(Remove this unused "zPos" private field.(‚¸èÃ8®ğ¬Æ1
+java:S10681"(Remove this unused "zPos" private field.(‚¸èÃ8ëáÂŸÆ1
 ä
-java:S6541{"ÆA "Brain Method" was detected. Refactor it to reduce at least one of the following metrics: LOC from 145 to 64, Complexity from 46 to 14, Nesting Level from 3 to 2, Number of Variables from 28 to 6.(í­ê»8¯ğ¬Æ1
+java:S6541~"ÆA "Brain Method" was detected. Refactor it to reduce at least one of the following metrics: LOC from 127 to 64, Complexity from 40 to 14, Nesting Level from 3 to 2, Number of Variables from 28 to 6.(í­ê»8ëáÂŸÆ1

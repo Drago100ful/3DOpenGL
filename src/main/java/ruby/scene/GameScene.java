@@ -36,7 +36,7 @@ public class GameScene extends Scene {
 
         Window.setCursor(false);
         this.camera = new Camera(new Vector3f(48, -10, -16));
-        this.camera.setAngle(new Vector2f(270, 0));
+        this.camera.setAngle(new Vector2f(0, 0));
 
         chunk = new Chunk(true);
         chunk.start();

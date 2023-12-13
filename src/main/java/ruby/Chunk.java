@@ -3,10 +3,13 @@ package ruby;
 import components.Block;
 import org.joml.Vector2f;
 import org.joml.Vector3f;
+import org.lwjgl.vulkan.VkExportMetalTextureInfoEXT;
 import ruby.renderer.Shader;
 import ruby.util.AssetPool;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.IntStream;
 
@@ -142,33 +145,6 @@ public class Chunk {
                 }
                 offset += VERTEX_SIZE;
             }
-
-            if (x < CHUNK_X) {
-                regenerateVoxel(new Vector3f((x + 1),y,z));
-            }
-
-            if (x > 0) {
-                regenerateVoxel(new Vector3f((x - 1),y,z));
-            }
-
-            if (y < CHUNK_Y) {
-                regenerateVoxel(new Vector3f(x,(y + 1),z));
-            }
-
-            if (y > 0) {
-                regenerateVoxel(new Vector3f(x,(y - 1),z));
-
-            }
-
-            if (z < CHUNK_Z) {
-                regenerateVoxel(new Vector3f(x,y,(z + 1)));
-            }
-
-            if (z > 0) {
-                regenerateVoxel(new Vector3f(x,y,(z - 1)));
-            }
-
-
             return;
         }
 
@@ -320,17 +296,60 @@ public class Chunk {
         }
     }
 
-    private int regenerateVoxel(Vector3f pos) {
-        System.out.println(pos);
+    private ArrayList<Integer> regenerateVoxel(Vector3f pos) {
         int x = (int) pos.x;
         int y = (int) pos.y;
         int z = (int) pos.z;
+        int offset = 24 * VERTEX_SIZE;
+        ArrayList<Integer> changedVoxels = new ArrayList<>();
 
-        int blockPosition = y*2*CHUNK_Y + x * CHUNK_X + z;
+        int currentBlock = generateBlockPosition(x, y, z);
+        changedVoxels.add(currentBlock * offset);
 
-        generateVoxel(x, y, z, blockPosition, true);
+        generateVoxel(x, y, z, currentBlock, true);
 
-        return blockPosition * 24 * VERTEX_SIZE;
+        if (x < CHUNK_X) {
+            currentBlock = generateBlockPosition(x + 1, y, z);
+            changedVoxels.add(currentBlock * offset);
+            generateVoxel(x + 1, y, z, currentBlock, true);
+        }
+
+        if (x > 0) {
+            currentBlock = generateBlockPosition(x - 1, y, z);
+            changedVoxels.add(currentBlock * offset);
+            generateVoxel(x - 1, y, z, currentBlock, true);
+        }
+
+        if (y < CHUNK_Y) {
+            currentBlock = generateBlockPosition(x, y + 1, z);
+            changedVoxels.add(currentBlock * offset);
+            generateVoxel(x, y + 1, z, currentBlock, true);
+        }
+
+        if (y > 0) {
+            currentBlock = generateBlockPosition(x, y - 1, z);
+            changedVoxels.add(currentBlock * offset);
+            generateVoxel(x, y - 1, z, currentBlock, true);
+
+        }
+
+        if (z < CHUNK_Z) {
+            currentBlock = generateBlockPosition(x, y, z + 1);
+            changedVoxels.add(currentBlock * offset);
+            generateVoxel(x, y, z + 1, currentBlock, true);
+        }
+
+        if (z > 0) {
+            currentBlock = generateBlockPosition(x, y, z - 1);
+            changedVoxels.add(currentBlock * offset);
+            generateVoxel(x, y, z - 1, currentBlock, true);
+        }
+
+        return changedVoxels;
+    }
+
+    private int generateBlockPosition(int x, int y, int z) {
+        return y*2*CHUNK_Y + x * CHUNK_X + z;
     }
 
     public void start() {
@@ -384,18 +403,28 @@ public class Chunk {
 
 
     public void render() {
-        // For now: Rebuffer Data every frame
         if (isDirty) {
-            int[] offsets = new int[dirtyBlocks.size()];
-            for (Vector3f pos : dirtyBlocks) {
-                regenerateVoxel(pos);
+            ArrayList<Integer> changedVoxels = new ArrayList<>();
+            for (Vector3f dirtyBlock : dirtyBlocks) {
+                changedVoxels.addAll(regenerateVoxel(dirtyBlock));
             }
 
             long start = System.nanoTime();
 
             glBindBuffer(GL_ARRAY_BUFFER, vboId);
-            glBufferSubData(GL_ARRAY_BUFFER, 0, vertices);
+
+            if (!changedVoxels.isEmpty()) {
+                for (int offset : changedVoxels) {
+                     glBufferSubData(GL_ARRAY_BUFFER,
+                               (offset * Float.BYTES),
+                                     Arrays.copyOfRange(vertices, offset, offset+(24*VERTEX_SIZE)));
+                }
+
+            } else {
+                glBufferSubData(GL_ARRAY_BUFFER, 0, vertices);
+            }
             System.out.println("Buffering took: " + (float) ((System.nanoTime()-start)*1E-9));
+
             dirtyBlocks.clear();
             isDirty = false;
         }
