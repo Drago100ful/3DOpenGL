@@ -26,7 +26,6 @@ public class Chunk {
     public static final int CHUNK_Z = 16;
     public static final int CHUNK_SIZE = CHUNK_X * CHUNK_Y * CHUNK_Z;
 
-
     private final int POS_SIZE = 1;
     private final int COLOR_SIZE = 4;
     private final int UV_SIZE = 2;
@@ -39,17 +38,26 @@ public class Chunk {
 
     private final int VERTEX_SIZE = POS_SIZE + COLOR_SIZE + UV_SIZE + TEXTURE_SIZE;
     private final int VERTEX_SIZE_BYTES = VERTEX_SIZE * Float.BYTES;
-    private final int[] elements = new int[36 * CHUNK_SIZE * 24 * VERTEX_SIZE];
-    private final float[] vertices = new float[CHUNK_SIZE * 24 * VERTEX_SIZE];
+
+
+    private final int PACKLIMIT = 1024; // 2^10 / 10 bit
+    private final int PACKFACTOR_X = PACKLIMIT / (CHUNK_X + 1);
+    private final int PACKFACTOR_Y = PACKLIMIT / (CHUNK_Y + 1);
+    private final int PACKFACTOR_Z = PACKLIMIT / (CHUNK_Z + 1);
+
     private final Block[][][] blocks;
-    private final int[] texSlots = IntStream.range(0, 8).toArray();
-    private final ArrayList<Integer> changedVoxels = new ArrayList<>();
+    private final List<Vector3f> dirtyBlocks = new ArrayList<>();
+    private boolean isDirty = true;
     private int xPos;
     private int zPos;
+
+    private final int[] elements = new int[36 * CHUNK_SIZE * 24 * VERTEX_SIZE];
+    private final float[] vertices = new float[CHUNK_SIZE * 24 * VERTEX_SIZE];
+    private final int[] texSlots = IntStream.range(0, 8).toArray();
+    private final ArrayList<Integer> changedVoxels = new ArrayList<>();
+
     private Shader shader;
     private int vaoId, vboId;
-    private boolean isDirty = true;
-    private final List<Vector3f> dirtyBlocks = new ArrayList<>();
 
     public Chunk() {
 
@@ -59,6 +67,16 @@ public class Chunk {
         this.shader = AssetPool.getShader("assets/shaders/default.glsl");
         this.blocks = new Block[CHUNK_X][CHUNK_Y][CHUNK_Z];
     }
+
+    public Chunk(int xPos, int zPos) {
+
+        this.xPos = xPos;
+        this.zPos = zPos;
+
+        this.shader = AssetPool.getShader("assets/shaders/default.glsl");
+        this.blocks = new Block[CHUNK_X][CHUNK_Y][CHUNK_Z];
+    }
+
 
     public Chunk(boolean genStone) {
         this();
@@ -77,6 +95,14 @@ public class Chunk {
 
     public Chunk(Block[][][] blocks) {
         this.blocks = blocks;
+    }
+
+    public void setX(int xPos) {
+        this.xPos = xPos;
+    }
+
+    public void setZ(int zPos) {
+        this.zPos = zPos;
     }
 
     public Block[][][] getBlocks() {
@@ -202,9 +228,6 @@ public class Chunk {
             if (i == 24) {
                 continue;
             }
-            xAdd = 0;
-            yAdd = 0;
-            zAdd = 0;
 
             switch (i) {
                 //   FL
@@ -248,16 +271,12 @@ public class Chunk {
                     yAdd = 1;
                     zAdd = 0;
                 }
+                default -> throw new RuntimeException("Unexpected vertex index: " + i);
             }
 
-            int packLimit = 1024; // 2^10 / 10 bit
-            int packFactorX = packLimit / (CHUNK_X + 1);
-            int packFactorY = packLimit / (CHUNK_Y + 1);
-            int packFactorZ = packLimit / (CHUNK_Z + 1);
-
-            int packedX = (x + xAdd) * packFactorX;
-            int packedY = (y + yAdd) * packFactorY;
-            int packedZ = (z + zAdd) * packFactorZ;
+            int packedX = (x + xAdd) * PACKFACTOR_X;
+            int packedY = (y + yAdd) * PACKFACTOR_Y;
+            int packedZ = (z + zAdd) * PACKFACTOR_Z;
 
             int pos = (packedX << 20) | (packedY << 10) | packedZ;
 
@@ -387,6 +406,7 @@ public class Chunk {
         glDisableVertexAttribArray(2);
         glDisableVertexAttribArray(3);
 
+
 //        for (int i = 0; i < textures.size(); ++i) {
 //            glActiveTexture(GL_TEXTURE0 + 1 + i);
 //            textures.get(i).unbind();
@@ -409,7 +429,7 @@ public class Chunk {
             glBindBuffer(GL_ARRAY_BUFFER, vboId);
 
             if (!changedVoxels.isEmpty()) {
-                for (int offset : changedVoxels) {
+                for (Integer offset : changedVoxels) {
                     glBufferSubData(GL_ARRAY_BUFFER, ((long) offset * Float.BYTES), Arrays.copyOfRange(vertices, offset, offset + (24 * VERTEX_SIZE)));
                 }
 
