@@ -83,11 +83,12 @@ public class Chunk {
         this();
 
         Block stone = AssetPool.getBlockSheet("assets/uv-test.png").getBlock(1);
+        textures.add(stone.getTexture());
 
         for (int x = 0; x < CHUNK_X; x++) {
-            for (int y = 0; y < CHUNK_Y; y++) {
+            for (int y = 0; y < CHUNK_Y / 32; y++) {
                 for (int z = 0; z < CHUNK_Z; z++) {
-                    setBlock(stone, x, y, z);
+                    blocks[x][y][z] = stone;
                 }
             }
         }

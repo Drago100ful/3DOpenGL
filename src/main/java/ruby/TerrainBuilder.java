@@ -17,7 +17,10 @@ public class TerrainBuilder {
     }
 
     public static Chunk generateChunk(int x, int z) {
-        return new Chunk(true );
+        Chunk chunk = new Chunk(true);
+        chunk.setX(x);
+        chunk.setX(z);
+        return chunk;
     }
 
 }

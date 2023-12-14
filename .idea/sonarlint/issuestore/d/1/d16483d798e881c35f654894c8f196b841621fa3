@@ -1,18 +1,18 @@
 
-b	java:S112—"FDefine and throw a dedicated exception instead of using a generic one.(¤”ç8Ö…š¼Æ1
-u	java:S127Ó"XRefactor the code in order to not assign to this loop counter from within the loop body.(áÏ¿8ß…š¼Æ1
-u	java:S127Ö"XRefactor the code in order to not assign to this loop counter from within the loop body.(áÏ¿8ß…š¼Æ1
-u	java:S127Ú"XRefactor the code in order to not assign to this loop counter from within the loop body.(áÏ¿8ß…š¼Æ1
-u	java:S127Ş"XRefactor the code in order to not assign to this loop counter from within the loop body.(áÏ¿8à…š¼Æ1
-u	java:S127â"XRefactor the code in order to not assign to this loop counter from within the loop body.(áÏ¿8à…š¼Æ1
-u	java:S127æ"XRefactor the code in order to not assign to this loop counter from within the loop body.(áÏ¿8á…š¼Æ1
+b	java:S112˜"FDefine and throw a dedicated exception instead of using a generic one.(¤”ç8Ö…š¼Æ1
+u	java:S127Ô"XRefactor the code in order to not assign to this loop counter from within the loop body.(áÏ¿8ß…š¼Æ1
+u	java:S127×"XRefactor the code in order to not assign to this loop counter from within the loop body.(áÏ¿8ß…š¼Æ1
+u	java:S127Û"XRefactor the code in order to not assign to this loop counter from within the loop body.(áÏ¿8ß…š¼Æ1
+u	java:S127ß"XRefactor the code in order to not assign to this loop counter from within the loop body.(áÏ¿8à…š¼Æ1
+u	java:S127ã"XRefactor the code in order to not assign to this loop counter from within the loop body.(áÏ¿8à…š¼Æ1
+u	java:S127ç"XRefactor the code in order to not assign to this loop counter from within the loop body.(áÏ¿8á…š¼Æ1
 E
 java:S1659="#Declare "vboId" on a separate line.(ª÷ìÂûÿÿÿÿ8ï†š¼Æ1
 L
 java:S1172R"/Remove this unused method parameter "genStone".(™Ù8‡š¼Æ1
 p
-java:S3776š"RRefactor this method to reduce its Cognitive Complexity from 56 to the 15 allowed.(í­ê»8»‡š¼Æ1
+java:S3776›"RRefactor this method to reduce its Cognitive Complexity from 56 to the 15 allowed.(í­ê»8»‡š¼Æ1
 d
-java:S1659Î"ADeclare "yAdd" and all following declarations on a separate line.(é»æªúÿÿÿÿ8Ã‡š¼Æ1
+java:S1659Ï"ADeclare "yAdd" and all following declarations on a separate line.(é»æªúÿÿÿÿ8Ã‡š¼Æ1
 å
-java:S6541š"ÆA "Brain Method" was detected. Refactor it to reduce at least one of the following metrics: LOC from 132 to 64, Complexity from 45 to 14, Nesting Level from 4 to 2, Number of Variables from 28 to 6.(í­ê»8«ˆš¼Æ1
+java:S6541›"ÆA "Brain Method" was detected. Refactor it to reduce at least one of the following metrics: LOC from 132 to 64, Complexity from 45 to 14, Nesting Level from 4 to 2, Number of Variables from 28 to 6.(í­ê»8«ˆš¼Æ1

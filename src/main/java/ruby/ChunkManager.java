@@ -44,7 +44,7 @@ public class ChunkManager {
     }
 
 
-    public static void update(Vector3f position) {
-        getChunk((int) position.x, (int) position.z);
+    public static void update(Vector3f playerPosition) {
+        getChunk((int) playerPosition.x, (int) playerPosition.z);
     }
 }
