@@ -27,24 +27,24 @@ public class Chunk {
     public static final int CHUNK_Z = 16;
     public static final int CHUNK_SIZE = CHUNK_X * CHUNK_Y * CHUNK_Z;
 
-    private final int POS_SIZE = 1;
-    private final int COLOR_SIZE = 4;
-    private final int UV_SIZE = 2;
-    private final int TEXTURE_SIZE = 1;
+    private static final int POS_SIZE = 1;
+    private static final int COLOR_SIZE = 4;
+    private static final int UV_SIZE = 2;
+    private static final int TEXTURE_SIZE = 1;
 
-    private final int POS_OFFSET = 0;
-    private final int COLOR_OFFSET = POS_OFFSET + POS_SIZE * Float.BYTES;
-    private final int UV_OFFSET = COLOR_OFFSET + COLOR_SIZE * Float.BYTES;
-    private final int TEXTURE_OFFSET = UV_OFFSET + UV_SIZE * Float.BYTES;
+    private static final int POS_OFFSET = 0;
+    private static final int COLOR_OFFSET = POS_OFFSET + POS_SIZE * Float.BYTES;
+    private static final int UV_OFFSET = COLOR_OFFSET + COLOR_SIZE * Float.BYTES;
+    private static final int TEXTURE_OFFSET = UV_OFFSET + UV_SIZE * Float.BYTES;
 
-    private final int VERTEX_SIZE = POS_SIZE + COLOR_SIZE + UV_SIZE + TEXTURE_SIZE;
-    private final int VERTEX_SIZE_BYTES = VERTEX_SIZE * Float.BYTES;
+    private static final int VERTEX_SIZE = POS_SIZE + COLOR_SIZE + UV_SIZE + TEXTURE_SIZE;
+    private static final int VERTEX_SIZE_BYTES = VERTEX_SIZE * Float.BYTES;
 
 
-    private final int PACKLIMIT = 1024; // 2^10 / 10 bit
-    private final int PACKFACTOR_X = PACKLIMIT / (CHUNK_X + 1);
-    private final int PACKFACTOR_Y = PACKLIMIT / (CHUNK_Y + 1);
-    private final int PACKFACTOR_Z = PACKLIMIT / (CHUNK_Z + 1);
+    private static final int PACKFACTOR_X = PACKLIMIT / (CHUNK_X + 1);
+    private static final int PACKLIMIT = 1024; // 2^10 / 10 bit
+    private static final int PACKFACTOR_Y = PACKLIMIT / (CHUNK_Y + 1);
+    private static final int PACKFACTOR_Z = PACKLIMIT / (CHUNK_Z + 1);
 
     private final Block[][][] blocks;
     private final List<Vector3f> dirtyBlocks = new ArrayList<>();
@@ -332,7 +332,6 @@ public class Chunk {
         int y = (int) pos.y;
         int z = (int) pos.z;
         int offset = 24 * VERTEX_SIZE;
-        ArrayList<Integer> changedVoxels = new ArrayList<>();
 
         int currentBlock = generateBlockPosition(x, y, z);
         changedVoxels.add(currentBlock * offset);
