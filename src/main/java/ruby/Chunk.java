@@ -58,7 +58,8 @@ public class Chunk {
     private final ArrayList<Texture> textures = new ArrayList<>();
 
     private Shader shader;
-    private int vaoId, vboId;
+    private int vaoId;
+    private int vboId;
 
     public Chunk() {
 
@@ -79,7 +80,7 @@ public class Chunk {
     }
 
 
-    public Chunk(boolean genStone) {
+    public Chunk(boolean ignored) {
         this();
 
         Block stone = AssetPool.getBlockSheet("assets/uv-test.png").getBlock(1);
@@ -204,7 +205,9 @@ public class Chunk {
             back = false;
         }
 
-        int xAdd, yAdd, zAdd;
+        int xAdd;
+        int yAdd;
+        int zAdd;
 
 
         for (int i = 0; i < 24; i++) {
