@@ -41,8 +41,8 @@ public class Chunk {
     private static final int VERTEX_SIZE_BYTES = VERTEX_SIZE * Float.BYTES;
 
 
-    private static final int PACKFACTOR_X = PACKLIMIT / (CHUNK_X + 1);
     private static final int PACKLIMIT = 1024; // 2^10 / 10 bit
+    private static final int PACKFACTOR_X = PACKLIMIT / (CHUNK_X + 1);
     private static final int PACKFACTOR_Y = PACKLIMIT / (CHUNK_Y + 1);
     private static final int PACKFACTOR_Z = PACKLIMIT / (CHUNK_Z + 1);
 
