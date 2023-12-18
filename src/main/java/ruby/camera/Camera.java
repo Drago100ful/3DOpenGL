@@ -27,7 +27,7 @@ public class Camera {
         this.transformMatrix = new Matrix4f();
         this.viewMatrix = new Matrix4f();
         this.projectionMatrix = new Matrix4f();
-        this.eye = new Vector3f(0, 0, 20);
+        this.eye = new Vector3f(0, 0, 1);
         this.center = new Vector3f(0, 0, 0);
         this.up = new Vector3f(0, 1, 0);
         this.angle = new Vector2f(0, 0);
@@ -60,11 +60,15 @@ public class Camera {
         angle.x = angle.x % 360;
         angle.y = angle.y % 360;
 
-//        System.out.println("X: " + angle.x + " | Y: " + angle.y);
+        //        System.out.println("X: " + angle.x + " | Y: " + angle.y);
     }
 
     public Matrix4f getViewMatrix() {
-        viewMatrix.identity().rotateX((float) Math.toRadians(-angle.y)).rotateY((float) Math.toRadians(-angle.x)).translate(0, -5, 0).lookAt(eye, center, up);
+        viewMatrix
+                .identity()
+                .rotateX((float) Math.toRadians(-angle.y))
+                .rotateY((float) Math.toRadians(-angle.x))
+                .lookAt(eye, center, up);
 
         return viewMatrix;
     }
@@ -91,23 +95,23 @@ public class Camera {
     public void translatePosition(Vector3f vector) {
 
         if (vector.z != 0) {
-            position.x -= (float) Math.sin(Math.toRadians(-angle.x)) * vector.z;
+            position.x += (float) Math.sin(Math.toRadians(-angle.x)) * vector.z * -1;
             position.z += (float) Math.cos(Math.toRadians(-angle.x)) * vector.z;
         }
 
         if (vector.x != 0) {
-            position.x -= (float) Math.sin(Math.toRadians(-angle.x - 90)) * vector.x;
+            position.x += (float) Math.sin(Math.toRadians(-angle.x - 90)) * vector.x * -1;
             position.z += (float) Math.cos(Math.toRadians(-angle.x - 90)) * vector.x;
         }
 
         position.y += vector.y;
-
     }
 
     public void adjustProjection() {
         projectionMatrix.identity();
 
         float windowAspect = ((float) Window.getWidth() / (float) Window.getHeight());
-        projectionMatrix.perspective((float) Math.toRadians(fov), windowAspect, nearPlane, farPlane);
+        projectionMatrix.perspective(
+                (float) Math.toRadians(fov), windowAspect, nearPlane, farPlane);
     }
 }

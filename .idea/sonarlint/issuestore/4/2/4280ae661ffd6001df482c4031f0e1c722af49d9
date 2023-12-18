@@ -1,36 +1,36 @@
 
-h	java:S112Û"FDefine and throw a dedicated exception instead of using a generic one.(Ã£ òùÿÿÿÿ8Æúä°Ä1
-t	java:S116"SRename this field "POS_SIZE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ŞÊûüÿÿÿÿ8Ùûä°Ä1
-q	java:S116"URename this field "COLOR_SIZE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÕìÓè8Ùûä°Ä1
-s	java:S116"RRename this field "UV_SIZE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(üŠâšûÿÿÿÿ8Ùûä°Ä1
-s	java:S116"WRename this field "TEXTURE_SIZE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(°‘²È8Ùûä°Ä1
-q	java:S116!"URename this field "POS_OFFSET" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(éô„ı8Ùûä°Ä1
-s	java:S116""WRename this field "COLOR_OFFSET" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(½›âŠ8Ùûä°Ä1
-u	java:S116#"TRename this field "UV_OFFSET" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¹’Üüÿÿÿÿ8Ùûä°Ä1
-t	java:S116$"YRename this field "TEXTURE_OFFSET" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(«ıƒ8Ùûä°Ä1
-r	java:S116&"VRename this field "VERTEX_SIZE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(î˜ã¦8Ùûä°Ä1
-x	java:S116'"\Rename this field "VERTEX_SIZE_BYTES" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ôóïñ8Ùûä°Ä1
+h	java:S112İ"FDefine and throw a dedicated exception instead of using a generic one.(Ã£ òùÿÿÿÿ8Æúä°Ä1
+t	java:S116"SRename this field "POS_SIZE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ŞÊûüÿÿÿÿ8Ùûä°Ä1
+q	java:S116"URename this field "COLOR_SIZE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÕìÓè8Ùûä°Ä1
+s	java:S116 "RRename this field "UV_SIZE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(üŠâšûÿÿÿÿ8Ùûä°Ä1
+s	java:S116!"WRename this field "TEXTURE_SIZE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(°‘²È8Ùûä°Ä1
+q	java:S116#"URename this field "POS_OFFSET" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(éô„ı8Ùûä°Ä1
+s	java:S116$"WRename this field "COLOR_OFFSET" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(½›âŠ8Ùûä°Ä1
+u	java:S116%"TRename this field "UV_OFFSET" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¹’Üüÿÿÿÿ8Ùûä°Ä1
+t	java:S116&"YRename this field "TEXTURE_OFFSET" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(«ıƒ8Ùûä°Ä1
+r	java:S116("VRename this field "VERTEX_SIZE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(î˜ã¦8Ùûä°Ä1
+x	java:S116)"\Rename this field "VERTEX_SIZE_BYTES" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ôóïñ8Ùûä°Ä1
 C
-java:S1170"!Make this final field static too.(ŞÊûüÿÿÿÿ8Ùûä°Ä1
+java:S1170"!Make this final field static too.(ŞÊûüÿÿÿÿ8Ùûä°Ä1
 >
-java:S1170"!Make this final field static too.(ÕìÓè8Ùûä°Ä1
+java:S1170"!Make this final field static too.(ÕìÓè8Ùûä°Ä1
 C
-java:S1170"!Make this final field static too.(üŠâšûÿÿÿÿ8Ùûä°Ä1
+java:S1170 "!Make this final field static too.(üŠâšûÿÿÿÿ8Ùûä°Ä1
 >
-java:S1170"!Make this final field static too.(°‘²È8Ùûä°Ä1
+java:S1170!"!Make this final field static too.(°‘²È8Ùûä°Ä1
 >
-java:S1170!"!Make this final field static too.(éô„ı8Ùûä°Ä1
+java:S1170#"!Make this final field static too.(éô„ı8Ùûä°Ä1
 >
-java:S1170""!Make this final field static too.(½›âŠ8Ùûä°Ä1
+java:S1170$"!Make this final field static too.(½›âŠ8Ùûä°Ä1
 C
-java:S1170#"!Make this final field static too.(¹’Üüÿÿÿÿ8Ùûä°Ä1
+java:S1170%"!Make this final field static too.(¹’Üüÿÿÿÿ8Ùûä°Ä1
 =
-java:S1170$"!Make this final field static too.(«ıƒ8Úûä°Ä1
+java:S1170&"!Make this final field static too.(«ıƒ8Úûä°Ä1
 >
-java:S1170&"!Make this final field static too.(î˜ã¦8Úûä°Ä1
+java:S1170("!Make this final field static too.(î˜ã¦8Úûä°Ä1
 >
-java:S1170'"!Make this final field static too.(Ôóïñ8Úûä°Ä1
+java:S1170)"!Make this final field static too.(Ôóïñ8Úûä°Ä1
 E
-java:S16593"#Declare "vboId" on a separate line.(ª÷ìÂûÿÿÿÿ8Ûûä°Ä1
+java:S16595"#Declare "vboId" on a separate line.(ª÷ìÂûÿÿÿÿ8Ûûä°Ä1
 d
-java:S1659›"ADeclare "yAdd" and all following declarations on a separate line.(Ö½óûÿÿÿÿ8äûä°Ä1
+java:S1659"ADeclare "yAdd" and all following declarations on a separate line.(Ö½óûÿÿÿÿ8äûä°Ä1

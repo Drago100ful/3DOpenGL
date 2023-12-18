@@ -15,5 +15,4 @@ public class World {
     public Block getBlock(int x, int y, int z) {
         return blockRenderers[x][y][z];
     }
-
 }

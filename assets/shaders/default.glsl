@@ -1,7 +1,7 @@
 #type vertex
 #version 460 core
 layout(location=0) in int aPos;
-layout(location=1) in vec4 aColor;
+layout(location=1) in int aColor;
 layout(location=2) in vec2 aUv;
 layout(location=3) in float aTextureId;
 
@@ -9,7 +9,7 @@ uniform mat4 uTransform;
 uniform mat4 uView;
 uniform mat4 uProjection;
 
-out vec4 fColor;
+flat out int fColor;
 out vec2 fUv;
 out float fTextureId;
 
@@ -31,7 +31,7 @@ void main() {
 #type fragment
 #version 460 core
 
-in vec4 fColor;
+flat in int fColor;
 in vec2 fUv;
 in float fTextureId;
 
@@ -39,13 +39,17 @@ uniform sampler2D uTextures[8];
 
 out vec4 color;
 
+const float r = ((fColor >> 24) & 0xFF) / 255.0;
+const float g = ((fColor >> 16) & 0xFF) / 255.0;
+const float b = ((fColor >> 8 )& 0xFF) / 255.0;
+const float a = ((fColor) & 0xFF) / 255.0;
 
 void main() {
 
     if (fTextureId > 0) {
-        color = fColor * texture(uTextures[int(fTextureId)], fUv);
+        color = vec4(r,g,b,a) * texture(uTextures[int(fTextureId)], fUv);
     } else {
-        color = vec4(fUv, 0, 1);
+        color = vec4(r,g,b,a);
     }
 
 }

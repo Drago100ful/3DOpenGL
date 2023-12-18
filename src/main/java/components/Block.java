@@ -1,14 +1,17 @@
 package components;
 
 import org.joml.Vector2f;
+
+import org.joml.Vector4f;
 import ruby.renderer.Texture;
 
 public class Block {
 
     public static final int BLOCK_SIZE = 10;
 
-    private Texture texture;
-    private Vector2f[] uvCoordinates;
+    private final Texture texture;
+    private final Vector2f[] uvCoordinates;
+    private final Vector4f color = new Vector4f(1);;
 
     public Block(Texture texture) {
         this.texture = texture;
@@ -32,6 +35,14 @@ public class Block {
 
     public Texture getTexture() {
         return texture;
+    }
+
+    public Vector4f getColor() {
+        return color;
+    }
+
+    public void setColor(Vector4f color) {
+        this.color.set(color);
     }
 
     public Vector2f[] getUvCoordinates() {

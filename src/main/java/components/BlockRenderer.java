@@ -7,9 +7,8 @@ import ruby.renderer.Texture;
 
 public class BlockRenderer extends Component {
 
-    private Vector4f color;
-    private Block block;
-
+    private final Vector4f color;
+    private final Block block;
 
     public BlockRenderer(Vector4f color) {
         this.color = color;
@@ -33,12 +32,9 @@ public class BlockRenderer extends Component {
         return color;
     }
 
+    @Override
+    public void start() {}
 
     @Override
-    public void start() {
-    }
-
-    @Override
-    public void update(float deltaTime) {
-    }
+    public void update(float deltaTime) {}
 }
